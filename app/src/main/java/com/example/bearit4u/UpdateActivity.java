@@ -1,5 +1,6 @@
 package com.example.bearit4u;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,13 +13,15 @@ public class UpdateActivity extends AppCompatActivity {
 
     EditText fname_input, lname_input, address_input, phone_input, email_input, password_input;
     Button update_button;
+    DataBaseHelper DB;
 
-    String id, fname, lname, address, phone, email, password;
+    String fname, lname, address, phone, email, password;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-
+        DB = new DataBaseHelper(this);
         fname_input = findViewById(R.id.etFirstName2);
         lname_input = findViewById(R.id.etLastName2);
         address_input = findViewById(R.id.etAddress2);
@@ -32,21 +35,14 @@ public class UpdateActivity extends AppCompatActivity {
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                DatabaseHelper DB = new DatabaseHelper(UpdateActivity.this);
-
+                User user = new User(fname_input.getText().toString(),
+                        lname_input.getText().toString(),address_input.getText().toString(),
+                        phone_input.getText().toString(), email_input.getText().toString(),
+                        password_input.getText().toString());
                 // call the method
-                DB.updateData(id, fname_input.getText().toString(),lname_input.getText().toString()
-                        ,address_input.getText().toString(), phone_input.getText().toString()
-                        ,email_input.getText().toString(),password_input.getText().toString());
-
+                DB.updateUser(id, user);
             }
         });
-
-
-
-
-
     }
 
     void getIntentData(){
@@ -56,7 +52,7 @@ public class UpdateActivity extends AppCompatActivity {
         || getIntent().hasExtra("password")){
 
             // getting data from intent
-            id = getIntent().getStringExtra("id");
+            id = Integer.parseInt(getIntent().getStringExtra("id"));
             fname = getIntent().getStringExtra("fname");
             lname = getIntent().getStringExtra("lname");
             address = getIntent().getStringExtra("address");

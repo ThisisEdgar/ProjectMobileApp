@@ -1,5 +1,6 @@
 package com.example.bearit4u;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,12 +12,12 @@ public class AddActivity extends AppCompatActivity {
 
     EditText txtFirstName, txtLastName, txtAddress, txtPhone, txtEmail, txtPassword;
     Button btnAddUser;
-
+    DataBaseHelper DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
+        DB = new DataBaseHelper(this);
         txtFirstName = findViewById(R.id.etFirstName);
         txtLastName = findViewById(R.id.etLastName);
         txtAddress = findViewById(R.id.etAddress);
@@ -28,13 +29,15 @@ public class AddActivity extends AppCompatActivity {
         btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseHelper DB = new DatabaseHelper(AddActivity.this);
-                DB.addUser(txtFirstName.getText().toString().trim(),
+
+                DB.addUserData(txtFirstName.getText().toString().trim(),
                         txtLastName.getText().toString().trim(),
                         txtAddress.getText().toString().trim(),
-                        Long.valueOf(txtPhone.getText().toString()),
+                        txtPhone.getText().toString(),
                         txtEmail.getText().toString().trim(),
                         txtPassword.getText().toString()
+
+
                 );
             }
         });

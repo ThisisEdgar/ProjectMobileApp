@@ -30,12 +30,13 @@
 
     <ImageView
         android:id="@+id/image_LU"
-        android:layout_width="384dp"
-        android:layout_height="268dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="31dp"
+        android:contentDescription="@string/image_LUContent"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister_LU"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
