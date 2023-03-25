@@ -52,4 +52,5 @@
     <string name="btnAddUser">Add User</string>
     <string name="btnEdit">Edit</string>
     <string name="btnDelete">Delete</string>
+    <string name="image_LUContent">blueprints of a car</string>
 </resources>

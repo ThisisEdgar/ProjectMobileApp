@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class DataBaseHelper2 extends SQLiteOpenHelper {
+public class DataBaseHelper extends SQLiteOpenHelper {
+
+    private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
     final static int DATABASE_VERSION = 5;
     //Service Providers Table
@@ -30,7 +33,6 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
     final static String T2COL5= "LastName";
     final static String T2COL6= "Address";
     final static String T2COL7= "Phone";
-    final static String T2COL8= "vId";
     //Vehicle Table
     final static String TABLE3_NAME = "Vehicle_table";
     final static String T3COL1= "vId";
@@ -42,13 +44,13 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
     final static String TABLE4_NAME = "Service_table";
     final static String T4COL1= "sId";
     final static String T4COL2 = "spId";
-    final static String T4COL3 = "vid";
+    final static String T4COL3 = "uid";
     final static String T4COL4= "Date";
     final static String T4COL5= "Services";
 
-    public DataBaseHelper2(@Nullable Context context) {
+    public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
+        this.context = context;
 //        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     }
 
@@ -63,7 +65,7 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
         query= "CREATE TABLE "+ TABLE2_NAME +
                 "(" + T2COL1+ " INTEGER PRIMARY KEY, "+T2COL2+ " TEXT, "+
                 T2COL3+" TEXT,"+T2COL4+" TEXT,"+T2COL5+" TEXT,"+
-                T2COL6+" TEXT,"+T2COL7+" TEXT,"+T2COL8+" TEXT)";
+                T2COL6+" TEXT,"+T2COL7+" TEXT)";
         sqLiteDatabase.execSQL(query);
 
         query= "CREATE TABLE "+ TABLE3_NAME +
@@ -113,6 +115,13 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
         values.put(T2COL6, address);
         values.put(T2COL7, phone);
         long l = sqLiteDatabase.insert(TABLE2_NAME, null, values);
+
+        if(l == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     //method to extract data from the database
@@ -127,7 +136,10 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE2_NAME;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        return cursor;
+
+        if (sqLiteDatabase != null){
+            cursor= sqLiteDatabase.rawQuery(query,null);
+        }return cursor;
     }
 
     public Cursor viewVehcileData(){
@@ -176,8 +188,9 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
     }
 
     //method to update a record
-    public boolean updateUser(int id, User user){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    void updateUser(int id, User user)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T2COL1, user.getEmail());
         values.put(T2COL2, user.getPassword());
@@ -185,11 +198,14 @@ public class DataBaseHelper2 extends SQLiteOpenHelper {
         values.put(T2COL3, user.getLastName());
         values.put(T2COL4, user.getAddress());
         values.put(T2COL5, user.getPhone());
-        int i = sqLiteDatabase.update(TABLE2_NAME,
-                values, "Id=?", new String[]{Integer.toString(id)});
-        if(i > 0)
-            return true;
-        else
-            return false;
+        long result = db.update(TABLE2_NAME, values, "_id=?", new String[]{Integer.toString(id)});
+
+        if(result == -1){
+
+            Toast.makeText(context, "Failed to Update!", Toast.LENGTH_SHORT).show();
+        }else{
+
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

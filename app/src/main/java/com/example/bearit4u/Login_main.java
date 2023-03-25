@@ -8,14 +8,14 @@ import android.view.View;
 import android.widget.Button;
 
 public class Login_main extends AppCompatActivity {
-    DataBaseHelper2 dbh;
+    DataBaseHelper dbh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_main);
         Button button1 = findViewById(R.id.btnUser_LM);
         Button button2 = findViewById(R.id.SP_LM);
-         dbh= new DataBaseHelper2(this);
+         dbh= new DataBaseHelper(this);
 
 
         dbh.addUserData("jwbjd", "jbdfj", "fhebjbef",

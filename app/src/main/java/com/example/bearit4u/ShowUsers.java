@@ -20,7 +20,7 @@ public class ShowUsers extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton btnAdd;
 
-    DatabaseHelper DB;
+    DataBaseHelper DB;
     ArrayList<String> user_id, firstName, lastName, address, phone, email, password;
     CustomAdapter customAdapter;
 
@@ -40,7 +40,7 @@ public class ShowUsers extends AppCompatActivity {
             }
         });
 
-        DB = new DatabaseHelper(this);
+        DB = new DataBaseHelper(this);
 
         user_id = new ArrayList<>();
         firstName = new ArrayList<>();
@@ -72,7 +72,7 @@ public class ShowUsers extends AppCompatActivity {
 
     void storeDataArrays(){
 
-        Cursor cursor = DB.readAllData();
+        Cursor cursor = DB.viewUserData();
         if(cursor.getCount()== 0){
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
 
