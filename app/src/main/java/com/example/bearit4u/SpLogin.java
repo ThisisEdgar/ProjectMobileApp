@@ -56,7 +56,7 @@ public class SpLogin extends AppCompatActivity {
                         if(enteredPassword.equals(passwords.get(usernames.indexOf(enteredUsername)))){
 
                             Intent intent = new Intent(SpLogin.this,SpMain.class);
-                            intent.putExtra("USERNAME", enteredUsername);
+                            intent.putExtra("SPID", usernames.indexOf(enteredUsername)+1);
                             startActivity(intent);
                         }
                         else
