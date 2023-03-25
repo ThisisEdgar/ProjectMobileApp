@@ -1,0 +1,55 @@
+<resources>
+    <!-- Edgar -->
+    <string name="app_name">BearIt4U</string>
+    <string name="title_LM">BearIt4U</string>
+    <string name="btn1_LM">User</string>
+    <string name="btn2_LM">Service provider</string>
+    <string name="btn1_LU">Register</string>
+    <string name="btn2_LU">Login</string>
+    <string name="title_RU">Register User</string>
+    <string name="hintName_RU">First Name</string>
+    <string name="hintLN_RU">Last Name</string>
+    <string name="hintAddress_RU">Address</string>
+    <string name="hintPhone_RU">Phone Number</string>
+    <string name="hintEmail_RU">Email</string>
+    <string name="hintPassword_RU">Password</string>
+    <string name="btn1_RU">Cancel</string>
+    <string name="btn2_RU">Register</string>
+    <string name="title_ELI">User Login</string>
+    <string name="hintUser_ELI">User</string>
+    <string name="hintPass_ELI">Password</string>
+    <string name="btn1_ELI">Login</string>
+    <string name="btn2_ELI">Cancel</string>
+    <string name="btnSearch">Search for Service Provider</string>
+    <string name="btnBook">Book an appointment</string>
+    <string name="btnViewAppointment">View Appointment</string>
+    <string name="btnVService">View Service History</string>
+    <string name="btnViewEdit">View/Edit Profile</string>
+    <string name="btnLogout_User">Logout</string>
+    <!-- Fernando -->
+    <string name="btnAdd">Add</string>
+    <string name="etFirstName">Enter First Name</string>
+    <string name="etLastName">Enter Last Name</string>
+    <string name="etAddress">Enter Address</string>
+    <string name="etPhone">Enter a phone</string>
+    <string name="etEmail">Enter Email</string>
+    <string name="etPassword">Input a Password</string>
+    <string name="btnAddUser_AA">Add User</string>
+    <string name="btnUpdate">Update</string>
+    <!-- Shi Chao (Troy) -->
+    <string name="btnRegister">Register</string>
+    <string name="btnLogin">Login</string>
+    <string name="txtLogin">Service Provider Login</string>
+    <string name="spHint1">Name</string>
+    <string name="spHint2">Username</string>
+    <string name="spHint3">Password</string>
+    <string name="spHint4">Re-enter password</string>
+    <string name="spHint5">Address</string>
+    <string name="btnUserInfo">User Info</string>
+    <string name="btnServiceInfo">Service Info</string>
+    <string name="btnLogout_SP">Logout</string>
+    <string name="btnSpViewUser">View</string>
+    <string name="btnAddUser">Add User</string>
+    <string name="btnEdit">Edit</string>
+    <string name="btnDelete">Delete</string>
+</resources>
