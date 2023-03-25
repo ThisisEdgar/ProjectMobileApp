@@ -36,7 +36,9 @@ public class UpdateActivity extends AppCompatActivity {
                 DatabaseHelper DB = new DatabaseHelper(UpdateActivity.this);
 
                 // call the method
-                DB.updateData(id, fname_input.getText().toString(),lname,address, phone,email,password);
+                DB.updateData(id, fname_input.getText().toString(),lname_input.getText().toString()
+                        ,address_input.getText().toString(), phone_input.getText().toString()
+                        ,email_input.getText().toString(),password_input.getText().toString());
 
             }
         });
