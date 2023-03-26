@@ -15,14 +15,14 @@ public class SPUserActivity extends AppCompatActivity
         implements CustomAdapter2.ItemClickListener{
 
     CustomAdapter2 adapter;
-    DataBaseHelper2 databaseHelper;
+    DataBaseHelper databaseHelper;
     ArrayList<String> users = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spuser);
-        databaseHelper = new DataBaseHelper2(this);
+        databaseHelper = new DataBaseHelper(this);
 
         Cursor cursor = databaseHelper.viewUserData();
         StringBuilder str = new StringBuilder();

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class SpLogin extends AppCompatActivity {
-    DataBaseHelper2 databaseHelper;
+    DataBaseHelper databaseHelper;
     String enteredUsername;
     String enteredPassword;
     ArrayList<String> usernames = new ArrayList<>();
@@ -23,7 +23,7 @@ public class SpLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sp_login);
-        databaseHelper = new DataBaseHelper2(this);
+        databaseHelper = new DataBaseHelper(this);
 
         EditText username = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
@@ -56,7 +56,7 @@ public class SpLogin extends AppCompatActivity {
                         if(enteredPassword.equals(passwords.get(usernames.indexOf(enteredUsername)))){
 
                             Intent intent = new Intent(SpLogin.this,SpMain.class);
-                            intent.putExtra("USERNAME", enteredUsername);
+                            intent.putExtra("SPID", usernames.indexOf(enteredUsername)+1);
                             startActivity(intent);
                         }
                         else
