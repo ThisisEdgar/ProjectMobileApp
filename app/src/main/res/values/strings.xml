@@ -53,4 +53,10 @@
     <string name="btnEdit">Edit</string>
     <string name="btnDelete">Delete</string>
     <string name="image_LUContent">blueprints of a car</string>
+    <string name="title_SOBU">Searching for Service Provider</string>
+    <string name="date_SOBU">Select a Date</string>
+    <string name="book_SOBU">Book an appointment</string>
+    <string name="back_SOBU">Back</string>
+    <string name="city_SCD">Select a City</string>
+    <string name="confirm">Confirm Selection</string>
 </resources>

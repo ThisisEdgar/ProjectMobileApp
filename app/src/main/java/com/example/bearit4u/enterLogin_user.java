@@ -19,12 +19,15 @@ public class enterLogin_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_login_user);
+
         Button button1= findViewById(R.id.btnLogin_ELI);
         Button button2=findViewById(R.id.btnCancel_ELI);
         EditText editText1= findViewById(R.id.inputUser_ELI);
         EditText editText2 = findViewById(R.id.inputPassword_ELI);
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        Cursor cursor = databaseHelper.readAllData();
+
+        DataBaseHelper databaseHelper = new DataBaseHelper(this);
+        Cursor cursor = databaseHelper.viewUserData(); // changed method
+
         if(cursor.getCount()>0){
             while(cursor.moveToNext()){
                 String usernameStr = cursor.getString(1); //Number of column 1
@@ -34,15 +37,16 @@ public class enterLogin_user extends AppCompatActivity {
             }
         }
         else{
-            Toast.makeText(enterLogin_user.this, "Username or password incorrect, try again", Toast.LENGTH_LONG).show();
+            Toast.makeText(enterLogin_user.this, "No users in database", Toast.LENGTH_LONG).show();
         }
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String inputUser = editText1.getText().toString();
                 String inputPassword = editText2.getText().toString();
 
-                if(inputPassword == "" || inputUser == "")
+                if(inputPassword.equals("") || inputUser == "")
                 {
                     Toast.makeText(enterLogin_user.this, "Username and Password are required"
                     ,Toast.LENGTH_LONG).show();

@@ -21,14 +21,14 @@ public class Login_user extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent= new Intent(Login_user.this, enterLogin_user.class);
+                Intent intent= new Intent(Login_user.this,register_user.class);
                 startActivity(intent);
             }
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(Login_user.this, register_user.class);
+                Intent intent= new Intent(Login_user.this, enterLogin_user.class);
                 startActivity(intent);
             }
         });

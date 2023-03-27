@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class searchOrBookUser extends AppCompatActivity {
+public class SelectCityandDate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_or_book_user);
-
-
+        setContentView(R.layout.activity_select_cityand_date);
     }
 }
