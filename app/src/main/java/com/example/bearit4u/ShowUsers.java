@@ -35,7 +35,7 @@ public class ShowUsers extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ShowUsers.this,AddActivity.class);
+                Intent intent = new Intent(ShowUsers.this,register_user.class);
                 startActivity(intent);
             }
         });

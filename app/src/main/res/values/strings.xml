@@ -26,6 +26,12 @@
     <string name="btnVService">View Service History</string>
     <string name="btnViewEdit">View/Edit Profile</string>
     <string name="btnLogout_User">Logout</string>
+    <string name="title_SOBU">Searching for Service Provider</string>
+    <string name="date_SOBU">Select a Date</string>
+    <string name="book_SOBU">Book an appointment</string>
+    <string name="back_SOBU">Back</string>
+    <string name="city_SCD">Select a City</string>
+    <string name="confirm">Confirm Selection</string>
     <!-- Fernando -->
     <string name="btnAdd">Add</string>
     <string name="etFirstName">Enter First Name</string>
