@@ -13,6 +13,7 @@ public class menu_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_user);
+
         Button bsearch = findViewById(R.id.btnSearch_MU);
         Button bBook = findViewById(R.id.btnBook_MU);
         Button bVAppointment = findViewById(R.id.btnView_MU);
@@ -30,7 +31,8 @@ public class menu_user extends AppCompatActivity {
         bBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(menu_user.this, searchOrBookUser.class);
+                startActivity(intent);
             }
         });
         bVAppointment.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,9 @@ public class menu_user extends AppCompatActivity {
         bLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(menu_user.this, Login_main.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
