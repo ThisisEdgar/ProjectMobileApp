@@ -23,8 +23,10 @@ public class enterLogin_user extends AppCompatActivity {
         Button button2=findViewById(R.id.btnCancel_ELI);
         EditText editText1= findViewById(R.id.inputUser_ELI);
         EditText editText2 = findViewById(R.id.inputPassword_ELI);
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        Cursor cursor = databaseHelper.readAllData();
+        DataBaseHelper databaseHelper = new DataBaseHelper(this);
+        Cursor cursor = databaseHelper.viewUserData();
+
+
         if(cursor.getCount()>0){
             while(cursor.moveToNext()){
                 String usernameStr = cursor.getString(1); //Number of column 1

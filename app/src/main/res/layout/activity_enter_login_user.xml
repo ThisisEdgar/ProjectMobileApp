@@ -10,62 +10,90 @@
         android:id="@+id/title_ELI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="79dp"
         android:text="@string/title_ELI"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/inputUser_ELI"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.038" />
 
     <Button
         android:id="@+id/btnLogin_ELI"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="71dp"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
         android:text="@string/btn1_ELI"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCancel_ELI"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCancel_ELI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword_ELI" />
+        app:layout_constraintTop_toTopOf="@+id/btnCancel_ELI" />
 
     <Button
         android:id="@+id/btnCancel_ELI"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="91dp"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
         android:text="@string/btn2_ELI"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin_ELI"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin_ELI" />
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@+id/btnLogin_ELI"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.746" />
 
     <EditText
         android:id="@+id/inputUser_ELI"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="31dp"
+        android:layout_width="250dp"
+        android:layout_height="83dp"
         android:ems="10"
         android:hint="@string/hintUser_ELI"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/inputPassword_ELI"
-        app:layout_constraintEnd_toEndOf="@+id/title_ELI"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword_ELI"
-        app:layout_constraintTop_toBottomOf="@+id/title_ELI" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/title_ELI"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/inputPassword_ELI"
-        android:layout_width="249dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="119dp"
+        android:layout_width="250dp"
+        android:layout_height="83dp"
         android:ems="10"
         android:hint="@string/hintPass_ELI"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin_ELI"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="80dp"
+        android:layout_height="83dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/inputUser_ELI"
+        app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputUser_ELI" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/password"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/passIcon" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="89dp"
+        android:layout_height="86dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/inputUser_ELI"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.701"
+        app:srcCompat="@drawable/user"
+        android:contentDescription="@string/userIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

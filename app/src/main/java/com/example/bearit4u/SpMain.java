@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SpMain extends AppCompatActivity {
-    DataBaseHelper2 databaseHelper;
+    DataBaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class SpMain extends AppCompatActivity {
 
         Intent intent = getIntent();
         int spid = intent.getIntExtra("SPID", 0);
-        databaseHelper = new DataBaseHelper2(this);
+        databaseHelper = new DataBaseHelper(this);
         Cursor spCursor = databaseHelper.viewSPData();
         if(spCursor.getCount()>0){
             while(spCursor.moveToNext()){

@@ -53,4 +53,6 @@
     <string name="btnEdit">Edit</string>
     <string name="btnDelete">Delete</string>
     <string name="image_LUContent">blueprints of a car</string>
+    <string name="userIcon">icon for user</string>
+    <string name="passIcon">TODicon for password</string>
 </resources>

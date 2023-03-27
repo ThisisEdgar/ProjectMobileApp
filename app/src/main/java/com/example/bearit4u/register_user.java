@@ -23,7 +23,9 @@ public class register_user extends AppCompatActivity {
         Button cancel= findViewById(R.id.btncancel_RU);
         Button register = findViewById(R.id.btnRegister_RU);
 
-        //method to add value to database
+
+
+
 
 
 
@@ -31,7 +33,7 @@ public class register_user extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(register_user.this, Login_user.class);
+                finish();
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
