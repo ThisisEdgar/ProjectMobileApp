@@ -19,6 +19,7 @@ public class SpMain extends AppCompatActivity {
         TextView welcome = findViewById(R.id.txtWelcome);
         Button logout = findViewById(R.id.btnLogout);
         Button user = findViewById(R.id.btnUserInfo);
+        Button service = findViewById(R.id.btnServiceInfo);
         String loginSP="";
 
         Intent intent = getIntent();
@@ -46,7 +47,17 @@ public class SpMain extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(SpMain.this,SPUserActivity.class));
+            }
+        });
+
+        service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SpMain.this,SpServiceActivity.class);
+                intent.putExtra("SPID", spid);
+                startActivity(intent);
             }
         });
     }
