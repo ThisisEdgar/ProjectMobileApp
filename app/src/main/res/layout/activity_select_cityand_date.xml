@@ -25,6 +25,7 @@
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="27dp"
+        android:hint="@string/hintSpinner"
         app:layout_constraintBottom_toTopOf="@+id/dataTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,15 +51,15 @@
         android:layout_marginStart="55dp"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnSCD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataTxt" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="191dp"
-        android:layout_height="60dp"
+        android:id="@+id/btnSCD"
+        android:layout_width="205dp"
+        android:layout_height="59dp"
         android:layout_marginBottom="17dp"
         android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"

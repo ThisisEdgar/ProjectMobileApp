@@ -24,14 +24,14 @@ public class menu_user extends AppCompatActivity {
         bsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(menu_user.this, searchOrBookUser.class);
+                Intent intent = new Intent(menu_user.this, SelectCityandDate.class);
                 startActivity(intent);
             }
         });
         bBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(menu_user.this, searchOrBookUser.class);
+                Intent intent = new Intent(menu_user.this, SelectCityandDate.class);
                 startActivity(intent);
             }
         });
