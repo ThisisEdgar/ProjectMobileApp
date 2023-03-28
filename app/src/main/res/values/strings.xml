@@ -61,4 +61,5 @@
     <string name="image_LUContent">blueprints of a car</string>
     <string name="userIcon">icon for user</string>
     <string name="passIcon">TODicon for password</string>
+    <string name="hintSpinner">Select a city</string>
 </resources>

@@ -19,6 +19,7 @@ public class enterLogin_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_login_user);
+
         Button button1= findViewById(R.id.btnLogin_ELI);
         Button button2=findViewById(R.id.btnCancel_ELI);
         EditText editText1= findViewById(R.id.inputUser_ELI);
@@ -26,7 +27,7 @@ public class enterLogin_user extends AppCompatActivity {
         DataBaseHelper databaseHelper = new DataBaseHelper(this);
         Cursor cursor = databaseHelper.viewUserData();
 
-
+        //gets column 1 and 6 from the database table users until it array is empty
         if(cursor.getCount()>0){
             while(cursor.moveToNext()){
                 String usernameStr = cursor.getString(1); //Number of column 1
@@ -35,15 +36,15 @@ public class enterLogin_user extends AppCompatActivity {
                 passwords.add(passwordStr);
             }
         }
-        else{
-            Toast.makeText(enterLogin_user.this, "Username or password incorrect, try again", Toast.LENGTH_LONG).show();
-        }
+//        else{
+//            Toast.makeText(enterLogin_user.this, "Username or password incorrect, try again", Toast.LENGTH_LONG).show();
+//        }
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String inputUser = editText1.getText().toString();
                 String inputPassword = editText2.getText().toString();
-
+                //Credential verification
                 if(inputPassword == "" || inputUser == "")
                 {
                     Toast.makeText(enterLogin_user.this, "Username and Password are required"
@@ -61,11 +62,13 @@ public class enterLogin_user extends AppCompatActivity {
 
             }
         });
+        //Cancel button goes back but closes that activity
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(enterLogin_user.this, Login_user.class);
                 startActivity(intent);
+                finish();
             }
         });
 
