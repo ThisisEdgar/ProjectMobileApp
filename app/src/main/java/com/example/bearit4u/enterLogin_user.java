@@ -47,7 +47,7 @@ public class enterLogin_user extends AppCompatActivity {
                 if(inputPassword == "" || inputUser == "")
                 {
                     Toast.makeText(enterLogin_user.this, "Username and Password are required"
-                    ,Toast.LENGTH_LONG).show();
+                            ,Toast.LENGTH_LONG).show();
                 }
                 else if (usernames.contains(inputUser) && passwords.contains(inputPassword)){
                     Intent intent= new Intent(enterLogin_user.this, menu_user.class);

@@ -105,15 +105,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".AddActivity"
-            android:exported="false"
-            android:label="Add User"
-            android:parentActivityName=".ShowUsers">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".ShowUsers"
             android:exported="true"
