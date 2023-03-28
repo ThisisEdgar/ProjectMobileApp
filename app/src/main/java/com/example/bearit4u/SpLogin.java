@@ -25,6 +25,11 @@ public class SpLogin extends AppCompatActivity {
         setContentView(R.layout.activity_sp_login);
         databaseHelper = new DataBaseHelper(this);
 
+        // dummy data
+        // databaseHelper.addSPData( "Montigo",
+        // "Montigo","Montigo","Montigo","Vancouver","354654",
+        //"repair");
+
         EditText username = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);
         Button btnLogin = findViewById(R.id.btnLogin);

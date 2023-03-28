@@ -13,7 +13,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
-    final static int DATABASE_VERSION = 5;
+    final static int DATABASE_VERSION = 8;
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
     final static String T1COL1 = "spId";
@@ -27,12 +27,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //User Table
     final static String TABLE2_NAME = "User_table";
     final static String T2COL1= "uId";
-    final static String T2COL2 = "Email";
-    final static String T2COL3 = "Password";
-    final static String T2COL4= "FirstName";
-    final static String T2COL5= "LastName";
-    final static String T2COL6= "Address";
-    final static String T2COL7= "Phone";
+    final static String T2COL2 = "FirstName";
+    final static String T2COL3 = "LastName";
+    final static String T2COL4= "Address";
+    final static String T2COL5= "Phone";
+    final static String T2COL6= "Email";
+    final static String T2COL7= "Password";
     //Vehicle Table
     final static String TABLE3_NAME = "Vehicle_table";
     final static String T3COL1= "vId";
@@ -93,6 +93,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                             String address, String city, String phone, String services){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put(T1COL2, username);
         values.put(T1COL3, name);
         values.put(T1COL4, password);
@@ -103,17 +104,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         long l = sqLiteDatabase.insert(TABLE1_NAME, null, values);
     }
 
-    public void addUserData(String email, String password, String first,
-                            String last, String address, String phone){
+    public void addUserData(String first,String last, String address,
+                            String phone, String email,  String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(T2COL2, email);
-        values.put(T2COL3, password);
-        values.put(T2COL4, first);
-        values.put(T2COL5, last);
-        values.put(T2COL6, address);
-        values.put(T2COL7, phone);
+        values.put(T2COL2, first);
+        values.put(T2COL3, last);
+        values.put(T2COL4, address);
+        values.put(T2COL5, phone);
+        values.put(T2COL6, email);
+        values.put(T2COL7, password);
         long l = sqLiteDatabase.insert(TABLE2_NAME, null, values);
 
         if(l == -1){
@@ -192,12 +193,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(T2COL1, user.getEmail());
-        values.put(T2COL2, user.getPassword());
-        values.put(T2COL3, user.getFirstName());
-        values.put(T2COL3, user.getLastName());
-        values.put(T2COL4, user.getAddress());
-        values.put(T2COL5, user.getPhone());
+        values.put(T2COL1, user.getFirstName());
+        values.put(T2COL2, user.getLastName());
+        values.put(T2COL3, user.getAddress());
+        values.put(T2COL3, user.getPhone());
+        values.put(T2COL4, user.getEmail());
+        values.put(T2COL5, user.getPassword());
         long result = db.update(TABLE2_NAME, values, "_id=?", new String[]{Integer.toString(id)});
 
         if(result == -1){
