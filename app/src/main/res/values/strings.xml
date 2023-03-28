@@ -61,13 +61,4 @@
     <string name="image_LUContent">blueprints of a car</string>
     <string name="userIcon">icon for user</string>
     <string name="passIcon">TODicon for password</string>
-    <string name="hintSpinner">Select a city</string>
-    <string name="txtSid">Service ID</string>
-    <string name="txtUser"><![CDATA[Customer Name & Email]]></string>
-    <string name="txtDate">Date</string>
-    <string name="btnAppointment">Appointment</string>
-    <string name="txtDetail">Appointment/Service Detail</string>
-    <string name="btnReminder">Send Reminder</string>
-    <string name="btnAddService">Add to Servicce History</string>
-    <string name="btnReport">Generate Service Report</string>
 </resources>
