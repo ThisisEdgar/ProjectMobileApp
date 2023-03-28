@@ -57,6 +57,8 @@ public class DataBaseMethods extends SQLiteOpenHelper {
             return true;
         else
             return false;
+
+        //second try
     }
     public Cursor seeThis(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
