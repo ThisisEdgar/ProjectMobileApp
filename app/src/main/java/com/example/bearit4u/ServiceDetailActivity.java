@@ -70,6 +70,13 @@ public class ServiceDetailActivity extends AppCompatActivity {
             reminder.setVisibility(View.INVISIBLE);
             add.setVisibility(View.INVISIBLE);
         }
-
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ServiceDetailActivity.this,EditServiceActivity.class);
+                intent.putExtra("SID", sid);
+                startActivity(intent);
+            }
+        });
     }
 }

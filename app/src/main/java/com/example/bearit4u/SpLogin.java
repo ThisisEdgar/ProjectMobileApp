@@ -32,8 +32,8 @@ public class SpLogin extends AppCompatActivity {
 //                "6041234567", "oil change,car inspection,engine check");
 //        databaseHelper.addSPData("bTire", "Burnaby Tire", "qwerty", "7000 Kingsway", "Burnaby",
 //                "7785556666", "tire change,car wash");
-//        databaseHelper.addServiceData(1,1,"2023-03-30", "car inspection", 1, 1);
-//        databaseHelper.addServiceData(2,1,"2023-04-10", "tire change", 0, 0);
+//        databaseHelper.addServiceData(1,1,"03/30/2023", "car inspection", 1, 1);
+//        databaseHelper.addServiceData(2,1,"04/10/2023", "tire change", 0, 0);
 
 
 

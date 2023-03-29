@@ -14,7 +14,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
 
-    final static int DATABASE_VERSION = 8;
+    final static int DATABASE_VERSION = 9;
 
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
@@ -52,6 +52,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     final static String T4COL6= "Pickup";           //0 for pick up, 1 for drop in
     final static String T4COL7= "Appointment";      //0 for appointment, 1 for service
 
+    //Report Table
+    final static String TABLE5_NAME = "Report_table";
+    final static String T5COL1= "sId";
+    final static String T5COL2 = "Report";
+
+
     public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -81,6 +87,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "(" + T4COL1+ " INTEGER PRIMARY KEY, "+T4COL2+ " INTEGER, "+
                 T4COL3+" INTEGER,"+T4COL4+" TEXT,"+T4COL5+" TEXT,"+T4COL6+" INTEGER,"+T4COL7+" INTEGER)";
         sqLiteDatabase.execSQL(query);
+
+        query= "CREATE TABLE "+ TABLE5_NAME +
+                "(" + T5COL1+ " INTEGER, "+T5COL2+ " TEXT)";
+        sqLiteDatabase.execSQL(query);
     }
 
     @Override
@@ -89,6 +99,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE2_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE3_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE4_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE5_NAME);
         onCreate(sqLiteDatabase);
     }
 
@@ -147,7 +158,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
     }
+    public void addReportData(int sid,String report){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
 
+        values.put(T2COL1, sid);
+        values.put(T2COL2, report);
+        long l = sqLiteDatabase.insert(TABLE5_NAME, null, values);
+
+        if(l == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
     //method to extract data from the database
     public Cursor viewSPData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();

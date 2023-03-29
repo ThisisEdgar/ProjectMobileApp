@@ -63,6 +63,8 @@ public class SpServiceActivity extends AppCompatActivity
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         adapter = new CustomAdapterSpService(this,ids, users, dates,this);
         recyclerView.setAdapter(adapter);
+
+
     }
 
     @Override
