@@ -20,6 +20,7 @@ public class SpServiceActivity extends AppCompatActivity
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<String> users = new ArrayList<>();
     ArrayList<String> dates = new ArrayList<>();
+    int appointment = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,13 @@ public class SpServiceActivity extends AppCompatActivity
         databaseHelper = new DataBaseHelper(this);
         Intent intent = getIntent();
         int spid = intent.getIntExtra("SPID", 0);
+        appointment = intent.getIntExtra("APPOINT", 0);
         Cursor cursor1 = databaseHelper.viewServiceData();
 
         StringBuilder str = new StringBuilder();
         if(cursor1.getCount()>0){
             while(cursor1.moveToNext()){
-                if(cursor1.getInt(1) == spid){
+                if(cursor1.getInt(1) == spid && cursor1.getInt(6) == appointment){
                     ids.add(cursor1.getInt(0));
                     dates.add(cursor1.getString(3));
                     int uid = cursor1.getInt(2);
@@ -65,6 +67,8 @@ public class SpServiceActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Intent intent = new Intent(SpServiceActivity.this,ServiceDetailActivity.class);
+        intent.putExtra("SID", ids.get(position));
+        startActivity(intent);
     }
 }
