@@ -209,4 +209,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
     }
+    public Cursor viewProvidersByCity(String cityChosen){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE1_NAME +" WHERE "+T1COL6+ "=?";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, new String[]{String.valueOf(cityChosen)});
+        return cursor;
+    }
+    public void addAppointment(String user_id, String date,String provider_id,String service, String pickUpOrDropOff){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(T4COL2, provider_id);
+        values.put(T4COL3, user_id);
+        values.put(T4COL4, date);
+        values.put(T4COL5, service);
+        //add pickup or dropOff in the services table
+        //values.put(T4COL6, pickUpOrDropOff);
+
+        long l = sqLiteDatabase.insert(TABLE4_NAME, null, values);
+
+        if(l == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
