@@ -24,6 +24,7 @@ public class enterLogin_user extends AppCompatActivity {
         Button button2=findViewById(R.id.btnCancel_ELI);
         EditText editText1= findViewById(R.id.inputUser_ELI);
         EditText editText2 = findViewById(R.id.inputPassword_ELI);
+        //Initialize view User Data
         DataBaseHelper databaseHelper = new DataBaseHelper(this);
         Cursor cursor = databaseHelper.viewUserData();
 
@@ -48,7 +49,7 @@ public class enterLogin_user extends AppCompatActivity {
                 if(inputPassword == "" || inputUser == "")
                 {
                     Toast.makeText(enterLogin_user.this, "Username and Password are required"
-                    ,Toast.LENGTH_LONG).show();
+                            ,Toast.LENGTH_LONG).show();
                 }
                 else if (usernames.contains(inputUser) && passwords.contains(inputPassword)){
                     Intent intent= new Intent(enterLogin_user.this, menu_user.class);
