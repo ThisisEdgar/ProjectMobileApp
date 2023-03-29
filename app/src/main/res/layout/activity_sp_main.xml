@@ -8,39 +8,39 @@
 
     <Button
         android:id="@+id/btnUserInfo"
-        android:layout_width="290dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="53dp"
         android:text="@string/btnUserInfo"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnServiceInfo"
+        app:layout_constraintBottom_toTopOf="@+id/btnAppointment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
 
     <Button
         android:id="@+id/btnServiceInfo"
-        android:layout_width="290dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="162dp"
+        android:layout_marginBottom="25dp"
         android:text="@string/btnServiceInfo"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUserInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAppointment" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="186dp"
+        android:layout_marginBottom="193dp"
         android:text="@string/btnLogout_SP"
         app:layout_constraintBottom_toTopOf="@+id/btnUserInfo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,4 +55,18 @@
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAppointment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="43dp"
+        android:text="@string/btnAppointment"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnServiceInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUserInfo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

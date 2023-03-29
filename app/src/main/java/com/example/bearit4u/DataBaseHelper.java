@@ -13,7 +13,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
+
     final static int DATABASE_VERSION = 8;
+
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
     final static String T1COL1 = "spId";
@@ -47,6 +49,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     final static String T4COL3 = "uid";
     final static String T4COL4= "Date";
     final static String T4COL5= "Services";
+    final static String T4COL6= "Pickup";           //0 for pick up, 1 for drop in
+    final static String T4COL7= "Appointment";      //0 for appointment, 1 for service
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -74,8 +78,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
 
         query= "CREATE TABLE "+ TABLE4_NAME +
-                "(" + T4COL1+ " INTEGER PRIMARY KEY, "+T4COL2+ " TEXT, "+
-                T4COL3+" TEXT,"+T4COL4+" TEXT,"+T4COL5+" TEXT)";
+                "(" + T4COL1+ " INTEGER PRIMARY KEY, "+T4COL2+ " INTEGER, "+
+                T4COL3+" INTEGER,"+T4COL4+" TEXT,"+T4COL5+" TEXT,"+T4COL6+" INTEGER,"+T4COL7+" INTEGER)";
         sqLiteDatabase.execSQL(query);
     }
 
@@ -100,7 +104,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(T1COL5, address);
         values.put(T1COL6, city);
         values.put(T1COL7, phone);
-        values.put(T1COL7, services);
+        values.put(T1COL8, services);
         long l = sqLiteDatabase.insert(TABLE1_NAME, null, values);
     }
 
@@ -123,6 +127,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void addServiceData(int spid, int uid, String date,
+                          String service, int pickup, int appointment){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T4COL2, spid);
+        values.put(T4COL3, uid);
+        values.put(T4COL4, date);
+        values.put(T4COL5, service);
+        values.put(T4COL6, pickup);
+        values.put(T4COL7, appointment);
+        long l = sqLiteDatabase.insert(TABLE4_NAME, null, values);
+
+        if(l == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //method to extract data from the database
