@@ -24,16 +24,28 @@ public class SelectCityandDate extends AppCompatActivity {
     ArrayList<String> cities = new ArrayList<>();
     Spinner city;
     Integer day, month, year;
+    String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_cityand_date);
-        //adding random data
+        /*adding random data
         DataBaseHelper sqLiteDatabase = new DataBaseHelper(this);
         sqLiteDatabase.addSPData("username", "name", "password", "address", "city", "phone", "services");
-
-
+        sqLiteDatabase.addSPData("user1", "name1", "pass1", "address1", "New York", "111-222-3333", "service1");
+        sqLiteDatabase.addSPData("user2", "name2", "pass2", "address2", "New York", "444-555-6666", "service2");
+        sqLiteDatabase.addSPData("user3", "name3", "pass3", "address3", "Los Angeles", "777-888-9999", "service3");
+        sqLiteDatabase.addSPData("user4", "name4", "pass4", "address4", "Los Angeles", "111-222-3333", "service4");
+        sqLiteDatabase.addSPData("user5", "name5", "pass5", "address5", "Chicago", "444-555-6666", "service5");
+        sqLiteDatabase.addSPData("user6", "name6", "pass6", "address6", "Chicago", "777-888-9999", "service6");
+        sqLiteDatabase.addSPData("user7", "name7", "pass7", "address7", "Houston", "111-222-3333", "service7");
+        sqLiteDatabase.addSPData("user8", "name8", "pass8", "address8", "Houston", "444-555-6666", "service8");
+        sqLiteDatabase.addSPData("user9", "name9", "pass9", "address9", "Philadelphia", "777-888-9999", "service9");
+        sqLiteDatabase.addSPData("user10", "name10", "pass10", "address10", "Philadelphia", "111-222-3333", "service10");
+        */
+        Intent intent =getIntent();
+        user_id = intent.getStringExtra("user_id");
         //Step 2. Get all the values from database
         DataBaseHelper databaseHelper = new DataBaseHelper(this);
         Cursor cursor = databaseHelper.viewSPData();
@@ -64,7 +76,7 @@ public class SelectCityandDate extends AppCompatActivity {
             }
         });
 
-        //Step . Send the selection to the next activity
+        //Step 5 Send the selection to the next activity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +91,7 @@ public class SelectCityandDate extends AppCompatActivity {
                     intent.putExtra("day", day);
                     intent.putExtra("month", month);
                     intent.putExtra("year", year);
+                    intent.putExtra("user_id",user_id);
                     startActivity(intent);
                 }
             }

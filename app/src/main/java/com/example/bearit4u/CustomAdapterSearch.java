@@ -17,9 +17,8 @@ public class CustomAdapterSearch extends RecyclerView.Adapter {
     String[] provider;
     LayoutInflater inflater;
 
-    public CustomAdapterSearch(Context context, Integer[] data,String[] provider,
+    public CustomAdapterSearch(Context context,String[] provider,
                          ItemClickListener itemClickListener1){
-        mData = data;
         itemClickListener = itemClickListener1;
         inflater = LayoutInflater.from(context);
         this.provider = provider;
@@ -41,6 +40,13 @@ public class CustomAdapterSearch extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((ViewHolderSearch)holder).textView.setText(provider[position]);
+        ((ViewHolderSearch)holder).itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(itemClickListener!=null)
+                    itemClickListener.onItemClick(view, holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
