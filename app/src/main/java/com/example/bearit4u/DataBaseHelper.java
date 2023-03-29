@@ -13,7 +13,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
-    final static int DATABASE_VERSION = 8;
+    final static int DATABASE_VERSION = 9;
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
     final static String T1COL1 = "spId";
@@ -88,7 +88,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    //method to insert data
+    //methods to insert data
     public void addSPData(String username, String name, String password,
                             String address, String city, String phone, String services){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -125,6 +125,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void addServiceData(String date,String services) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(T4COL4, date);
+        values.put(T4COL5, services);
+
+        long l = sqLiteDatabase.insert(TABLE4_NAME, null, values);
+
+        if(l == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     //method to extract data from the database
     public Cursor viewSPData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -143,7 +160,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }return cursor;
     }
 
-    public Cursor viewVehcileData(){
+    public Cursor viewVehicleData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE3_NAME;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -168,7 +185,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public boolean deleteVehcile(int vid){
+    public boolean deleteVehicle(int vid){
         SQLiteDatabase sQliteDatabase = this.getWritableDatabase();
         int i = sQliteDatabase.delete(TABLE3_NAME, "vId=?",
                 new String[]{Integer.toString(vid)});

@@ -62,4 +62,6 @@
     <string name="userIcon">icon for user</string>
     <string name="passIcon">TODicon for password</string>
     <string name="hintSpinner">Select a city</string>
+    <string name="btnPickup">Pickup</string>
+    <string name="btnDropoff">Drop Off</string>
 </resources>
