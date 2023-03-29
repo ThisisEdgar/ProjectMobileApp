@@ -24,6 +24,7 @@ public class enterLogin_user extends AppCompatActivity {
         Button button2=findViewById(R.id.btnCancel_ELI);
         EditText editText1= findViewById(R.id.inputUser_ELI);
         EditText editText2 = findViewById(R.id.inputPassword_ELI);
+        //Initialize view User Data
         DataBaseHelper databaseHelper = new DataBaseHelper(this);
         Cursor cursor = databaseHelper.viewUserData();
 
