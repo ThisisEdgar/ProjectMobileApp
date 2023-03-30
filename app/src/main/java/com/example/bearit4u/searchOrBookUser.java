@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
@@ -16,7 +17,7 @@ import android.widget.Toast;
 public class searchOrBookUser extends AppCompatActivity  implements CustomAdapterSearch.ItemClickListener{
     Integer pos;
     String[] provider;
-    String day,month,year,selectedCity,selectedProvider,user_id,provider_id;
+    String day,month,year,selectedCity,selectedProvider,user_id,provider_id,option;
     Button btnbook,btngoBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +54,38 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
         Integer numOfCols =1;
         recyclerView.setLayoutManager(new GridLayoutManager(this,numOfCols));
         recyclerView.setAdapter(customAdapterSearch);
+        //picup or dropoff
+        RadioGroup radioGroup = findViewById(R.id.radio_group);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+
+                if (checkedId == R.id.radio_button2) {
+                    option ="pickup";
+                } else if (checkedId == R.id.radio_button2) {
+                    option="dropoff";
+                }
+            }
+        });
         btnbook = findViewById(R.id.btnBook_SBU);
         btngoBack = findViewById(R.id.btnBack_SBU);
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-        Intent intent = new Intent(searchOrBookUser.this, pickupOrDropOff.class);
-        intent.putExtra("provider", provider[pos]);
-        intent.putExtra("day", day);
-        intent.putExtra("month", month);
-        intent.putExtra("year", year);
-        intent.putExtra("user_id",user_id);
-        intent.putExtra("provider_id",provider_id);
-        startActivity(intent);
+                if(pos != 0){
+                    Intent intent = new Intent(searchOrBookUser.this, pickupOrDropOff.class);
+                    intent.putExtra("provider", provider[pos]);
+                    intent.putExtra("day", day);
+                    intent.putExtra("month", month);
+                    intent.putExtra("year", year);
+                    intent.putExtra("user_id",user_id);
+                    intent.putExtra("provider_id",provider_id);
+                    intent.putExtra("option",option);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(searchOrBookUser.this,"Please select a provider", Toast.LENGTH_LONG).show();
+                }
             }
         });
         btngoBack.setOnClickListener(new View.OnClickListener() {
