@@ -75,4 +75,6 @@
     <string name="btnReminder">Send Reminder</string>
     <string name="hintSpinner" />
     <string name="btnAppointment">Appointment</string>
+    <string name="txtReport">Enter Report</string>
+    <string name="btnGenerate">Generate</string>
 </resources>

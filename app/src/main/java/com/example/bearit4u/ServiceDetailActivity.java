@@ -12,7 +12,8 @@ import android.widget.Toast;
 
 public class ServiceDetailActivity extends AppCompatActivity {
     DataBaseHelper databaseHelper;
-
+    int spid = 0;
+    int uid = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class ServiceDetailActivity extends AppCompatActivity {
         Button report = findViewById(R.id.btnReport);
         Intent intent = getIntent();
         int sid = intent.getIntExtra("SID", 0);
+
         int appointment=0;
 
         Cursor cursor1 = databaseHelper.viewServiceData();
@@ -41,16 +43,17 @@ public class ServiceDetailActivity extends AppCompatActivity {
                     appointment =  cursor1.getInt(6);
                     date.setText("Date: "+cursor1.getString(3));
                     services.setText("Services:\n"+cursor1.getString(4));
-                    int uid = cursor1.getInt(2);
+                    uid = cursor1.getInt(2);
+                    spid = cursor1.getInt(1);
                     Cursor cursor2 = databaseHelper.viewUserData();
                     while(cursor2.moveToNext()){
                         if(cursor2.getInt(0) == uid){
                             StringBuilder str = new StringBuilder();
-                            str.append(cursor2.getString(3));
-                            str.append(" " + cursor2.getString(4));
+                            str.append(cursor2.getString(1));
+                            str.append(" " + cursor2.getString(2));
                             name.setText("Customer Name:\n"+str);
-                            email.setText("\n"+"Email: "+cursor2.getString(1));
-                            phone.setText("Phone: "+cursor2.getString(6));
+                            email.setText("\n"+"Email: "+cursor2.getString(5));
+                            phone.setText("Phone: "+cursor2.getString(4));
                         }
                     }
                 }
@@ -77,6 +80,28 @@ public class ServiceDetailActivity extends AppCompatActivity {
                 intent.putExtra("SID", sid);
                 startActivity(intent);
                 finish();
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseHelper.appointmentToService(sid);
+            }
+        });
+        
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ServiceDetailActivity.this,ReportActivity.class);
+                intent.putExtra("SID", sid);
+                startActivity(intent);
+            }
+        });
+
+        reminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseHelper.addReminderData(sid, spid, uid);
             }
         });
     }
