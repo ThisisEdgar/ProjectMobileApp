@@ -66,6 +66,9 @@ public class pickupOrDropOff extends AppCompatActivity {
 //            }
 //        });
     }
+
+
+
     private ArrayList<ServiceModel> getData(){
 
         for(int i = 0; i < data.length; i++){

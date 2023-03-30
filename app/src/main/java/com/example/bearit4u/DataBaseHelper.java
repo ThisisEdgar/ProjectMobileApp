@@ -14,7 +14,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
 
+
     final static int DATABASE_VERSION = 9;
+
+
 
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
@@ -140,8 +143,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+
     public void addServiceData(int spid, int uid, String date,
                           String service, int pickup, int appointment){
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T4COL2, spid);
@@ -172,7 +177,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
 
+
     }
+
     //method to extract data from the database
     public Cursor viewSPData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();

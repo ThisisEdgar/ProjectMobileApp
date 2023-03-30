@@ -26,6 +26,8 @@ public class SpLogin extends AppCompatActivity {
         databaseHelper = new DataBaseHelper(this);
 
 
+
+
 //        databaseHelper.addUserData("troy_kan@hotmail.com", "123456", "Troy", "Kan",
 //                "12345 Kingsway", "5873570958");
 //        databaseHelper.addSPData("abc", "ABC Car Service", "ab12345c", "600 Royal Ave", "New Westminster",
@@ -35,6 +37,16 @@ public class SpLogin extends AppCompatActivity {
 //        databaseHelper.addServiceData(1,1,"03/30/2023", "car inspection", 1, 1);
 //        databaseHelper.addServiceData(2,1,"04/10/2023", "tire change", 0, 0);
 
+
+
+       //  databaseHelper.addSPData( "Walmart",
+       //  "Walmart","Walmart","Walmart","Kelowna","354654",
+      //  "Diagnose");
+
+        // dummy data
+        // databaseHelper.addSPData( "Montigo",
+        // "Montigo","Montigo","Montigo","Vancouver","354654",
+        //"repair");
 
 
         EditText username = findViewById(R.id.editTextUsername);
