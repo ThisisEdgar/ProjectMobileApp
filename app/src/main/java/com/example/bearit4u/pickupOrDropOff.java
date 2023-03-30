@@ -19,8 +19,8 @@ public class pickupOrDropOff extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<ServiceModel> arrayList = new ArrayList<>();
-    Button btnPickup = findViewById(R.id.btnPickup);
-    Button btnDropoff = findViewById(R.id.btnDropoff);
+//    Button btnPickup = findViewById(R.id.btnPickup);
+//    Button btnDropoff = findViewById(R.id.btnDropoff);
 
     String[] data = new String[]{"Change Tires", "Oil Change", "Annual Revision", "break revision", "pressure adjust", "Engine setup"};
     @Override
@@ -52,19 +52,19 @@ public class pickupOrDropOff extends AppCompatActivity {
         // Don't forget to send user_id:
         // intent.putExtra("user_id",user_id);
 
-        btnPickup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        btnDropoff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        btnPickup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//
+//        btnDropoff.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 
 

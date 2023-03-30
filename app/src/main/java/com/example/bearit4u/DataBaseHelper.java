@@ -13,11 +13,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
-<<<<<<< HEAD
+
+
     final static int DATABASE_VERSION = 9;
-=======
-    final static int DATABASE_VERSION = 8;
->>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
+
+
+
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
     final static String T1COL1 = "spId";
@@ -51,6 +52,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     final static String T4COL3 = "uid";
     final static String T4COL4= "Date";
     final static String T4COL5= "Services";
+    final static String T4COL6= "Pickup";           //0 for pick up, 1 for drop in
+    final static String T4COL7= "Appointment";      //0 for appointment, 1 for service
+
+    //Report Table
+    final static String TABLE5_NAME = "Report_table";
+    final static String T5COL1= "sId";
+    final static String T5COL2 = "Report";
+
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -78,8 +87,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
 
         query= "CREATE TABLE "+ TABLE4_NAME +
-                "(" + T4COL1+ " INTEGER PRIMARY KEY, "+T4COL2+ " TEXT, "+
-                T4COL3+" TEXT,"+T4COL4+" TEXT,"+T4COL5+" TEXT)";
+                "(" + T4COL1+ " INTEGER PRIMARY KEY, "+T4COL2+ " INTEGER, "+
+                T4COL3+" INTEGER,"+T4COL4+" TEXT,"+T4COL5+" TEXT,"+T4COL6+" INTEGER,"+T4COL7+" INTEGER)";
+        sqLiteDatabase.execSQL(query);
+
+        query= "CREATE TABLE "+ TABLE5_NAME +
+                "(" + T5COL1+ " INTEGER, "+T5COL2+ " TEXT)";
         sqLiteDatabase.execSQL(query);
     }
 
@@ -89,10 +102,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE2_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE3_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE4_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE5_NAME);
         onCreate(sqLiteDatabase);
     }
 
-    //methods to insert data
+    //method to insert data
     public void addSPData(String username, String name, String password,
                             String address, String city, String phone, String services){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -104,7 +118,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(T1COL5, address);
         values.put(T1COL6, city);
         values.put(T1COL7, phone);
-        values.put(T1COL7, services);
+        values.put(T1COL8, services);
         long l = sqLiteDatabase.insert(TABLE1_NAME, null, values);
     }
 
@@ -129,14 +143,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-<<<<<<< HEAD
-    public void addServiceData(String date,String services) {
+
+    public void addServiceData(int spid, int uid, String date,
+                          String service, int pickup, int appointment){
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
+        values.put(T4COL2, spid);
+        values.put(T4COL3, uid);
         values.put(T4COL4, date);
-        values.put(T4COL5, services);
-
+        values.put(T4COL5, service);
+        values.put(T4COL6, pickup);
+        values.put(T4COL7, appointment);
         long l = sqLiteDatabase.insert(TABLE4_NAME, null, values);
 
         if(l == -1){
@@ -144,11 +162,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }else{
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void addReportData(int sid,String report){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(T2COL1, sid);
+        values.put(T2COL2, report);
+        long l = sqLiteDatabase.insert(TABLE5_NAME, null, values);
+
+        if(l == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
-=======
->>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
     //method to extract data from the database
     public Cursor viewSPData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -167,7 +198,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }return cursor;
     }
 
-    public Cursor viewVehicleData(){
+    public Cursor viewVehcileData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE3_NAME;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -192,7 +223,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public boolean deleteVehicle(int vid){
+    public boolean deleteVehcile(int vid){
         SQLiteDatabase sQliteDatabase = this.getWritableDatabase();
         int i = sQliteDatabase.delete(TABLE3_NAME, "vId=?",
                 new String[]{Integer.toString(vid)});
@@ -233,6 +264,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    void updateService(int sid, String date,
+                        int pickup, int appointment){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T4COL4, date);
+//        values.put(T4COL5, service);
+        values.put(T4COL6, pickup);
+        values.put(T4COL7, appointment);
+        long result = db.update(TABLE4_NAME, values, "sid=?", new String[]{Integer.toString(sid)});
+
+        if(result < 0){
+
+            Toast.makeText(context, "Failed to Update!", Toast.LENGTH_SHORT).show();
+        }else{
+
+            Toast.makeText(context, "Update Success!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public Cursor viewProvidersByCity(String cityChosen){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE1_NAME +" WHERE "+T1COL6+ "=?";
