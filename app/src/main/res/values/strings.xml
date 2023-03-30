@@ -78,6 +78,8 @@
     <string name="btnReport">Generate Report</string>
     <string name="btnAddService">Add Service History</string>
     <string name="btnReminder">Send Reminder</string>
-    
+
     <string name="btnAppointment">Appointment</string>
+    <string name="btn1_CA">Confirm</string>
+    <string name="btn2_CA">Edit</string>
 </resources>
