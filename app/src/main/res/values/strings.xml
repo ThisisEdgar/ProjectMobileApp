@@ -66,4 +66,18 @@
     <string name="btnDropoff">Drop Off</string>
     <string name="rdPick">Pickup</string>
     <string name="rdDrop">Dropoff</string>
+    <string name="radioPickup">Pickup</string>
+    <string name="radioDropIn">Drop In</string>
+    <string name="txtServiceDate">Service Date</string>
+    <string name="txtServiceReport">Services</string>
+    <string name="txthintDate">mm/dd/yyyy</string>
+    <string name="txtSid">Service ID</string>
+    <string name="txtUser">Customer Info</string>
+    <string name="txtDate">Date</string>
+    <string name="txtDetail">Appointment/Service Detail</string>
+    <string name="btnReport">Generate Report</string>
+    <string name="btnAddService">Add Service History</string>
+    <string name="btnReminder">Send Reminder</string>
+    
+    <string name="btnAppointment">Appointment</string>
 </resources>

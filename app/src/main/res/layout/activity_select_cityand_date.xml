@@ -29,7 +29,8 @@
         app:layout_constraintBottom_toTopOf="@+id/dataTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/cityTxt"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/cityTxt"
