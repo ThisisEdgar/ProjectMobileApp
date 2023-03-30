@@ -283,7 +283,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.rawQuery(query, new String[]{String.valueOf(cityChosen)});
         return cursor;
     }
-    public void addAppointment(String user_id, String date,String provider_id,String service, String pickUpOrDropOff){
+    public void addAppointment(String user_id, String date,String provider_id,String service, String pickUpOrDropOff,String Appointment){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -291,8 +291,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(T4COL3, user_id);
         values.put(T4COL4, date);
         values.put(T4COL5, service);
-        //add pickup or dropOff in the services table
-        //values.put(T4COL6, pickUpOrDropOff);
+        values.put(T4COL6, pickUpOrDropOff);
+        values.put(T4COL7,Appointment);
 
         long l = sqLiteDatabase.insert(TABLE4_NAME, null, values);
 

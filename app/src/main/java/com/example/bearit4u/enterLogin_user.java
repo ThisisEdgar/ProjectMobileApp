@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class enterLogin_user extends AppCompatActivity {
     ArrayList<String> usernames = new ArrayList<>();
     ArrayList<String> passwords = new ArrayList<>();
+    String inputUser,inputPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +44,26 @@ public class enterLogin_user extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String inputUser = editText1.getText().toString();
-                String inputPassword = editText2.getText().toString();
+                inputUser = editText1.getText().toString();
+                inputPassword = editText2.getText().toString();
                 //Credential verification
                 if(inputPassword == "" || inputUser == "")
                 {
                     Toast.makeText(enterLogin_user.this, "Username and Password are required"
                             ,Toast.LENGTH_LONG).show();
                 }
-                else if (usernames.contains(inputUser) && passwords.contains(inputPassword)){
-                    Intent intent= new Intent(enterLogin_user.this, menu_user.class);
-                    intent.putExtra("userName",inputUser);
-                    startActivity(intent);
+                else if (usernames.contains(inputUser)){
+                    if (inputPassword.equals(passwords.get(usernames.indexOf(inputUser))))
+                    {
+                        Intent intent= new Intent(enterLogin_user.this, menu_user.class);
+                        intent.putExtra("userName",inputUser);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(enterLogin_user.this, "Wrong password"
+                                ,Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 else{
                     Toast.makeText(enterLogin_user.this, "Incorrect credentials"
