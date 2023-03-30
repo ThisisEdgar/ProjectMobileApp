@@ -61,6 +61,11 @@
     <string name="image_LUContent">blueprints of a car</string>
     <string name="userIcon">icon for user</string>
     <string name="passIcon">TODicon for password</string>
+    <string name="hintSpinner">Select a city</string>
+    <string name="btnPickup">Pickup</string>
+    <string name="btnDropoff">Drop Off</string>
+    <string name="rdPick">Pickup</string>
+    <string name="rdDrop">Dropoff</string>
     <string name="radioPickup">Pickup</string>
     <string name="radioDropIn">Drop In</string>
     <string name="txtServiceDate">Service Date</string>
@@ -73,8 +78,13 @@
     <string name="btnReport">Generate Report</string>
     <string name="btnAddService">Add Service History</string>
     <string name="btnReminder">Send Reminder</string>
-    <string name="hintSpinner" />
+
     <string name="btnAppointment">Appointment</string>
+
     <string name="txtReport">Enter Report</string>
     <string name="btnGenerate">Generate</string>
+
+    <string name="btn1_CA">Confirm</string>
+    <string name="btn2_CA">Edit</string>
+
 </resources>

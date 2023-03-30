@@ -21,9 +21,8 @@ public class pickupOrDropOff extends AppCompatActivity {
         date= month +"/"+day+"/"+year;
         user_id = intent.getStringExtra("user_id");
         provider_id= intent.getStringExtra("provider_id");
-        //insert values into database
-        DataBaseHelper databaseHelper = new DataBaseHelper(this);
-        databaseHelper.addAppointment(user_id,date,provider_id,service,pickupOrDropoff);
+        pickupOrDropoff = intent.getStringExtra("option");
+
 
         // Don't forget to send user_id:
         // intent.putExtra("user_id",user_id);

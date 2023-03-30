@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".confirmation_appointment">
+
+    <TextView
+        android:id="@+id/txtOption_CA"
+        android:layout_width="190dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="143dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCity_CA" />
+
+    <TextView
+        android:id="@+id/txtYear_CA"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="84dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_CA" />
+
+    <TextView
+        android:id="@+id/txtDay_CA"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="43dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtYear_CA"
+        app:layout_constraintStart_toEndOf="@+id/txtMonth_CA"
+        app:layout_constraintTop_toBottomOf="@+id/title_CA" />
+
+    <TextView
+        android:id="@+id/txtMonth_CA"
+        android:layout_width="78dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="43dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_CA" />
+
+    <TextView
+        android:id="@+id/title_CA"
+        android:layout_width="200dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="106dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnConfirm_CA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/btn1_CA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCity_CA"
+        android:layout_width="190dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="143dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtYear_CA" />
+
+    <TextView
+        android:id="@+id/txtServices_CA"
+        android:layout_width="242dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="91dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProvider_CA" />
+
+    <TextView
+        android:id="@+id/txtProvider_CA"
+        android:layout_width="190dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="143dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCity_CA" />
+
+    <Button
+        android:id="@+id/btnEdit_CA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/btn2_CA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

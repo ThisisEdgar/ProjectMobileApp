@@ -10,7 +10,7 @@
         android:id="@+id/dataTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/date_SOBU"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/calendarAppointment"
@@ -20,11 +20,11 @@
 
     <Spinner
         android:id="@+id/spinnerDrop"
-        android:layout_width="398dp"
+        android:layout_width="392dp"
         android:layout_height="48dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="30dp"
         android:hint="@string/hintSpinner"
         app:layout_constraintBottom_toTopOf="@+id/dataTxt"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,24 +34,24 @@
 
     <TextView
         android:id="@+id/cityTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/city_SCD"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/spinnerDrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="20sp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CalendarView
         android:id="@+id/calendarAppointment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="22dp"
+        android:layout_width="299dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="13dp"
         app:layout_constraintBottom_toTopOf="@+id/btnSCD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,9 +59,9 @@
 
     <Button
         android:id="@+id/btnSCD"
-        android:layout_width="205dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="17dp"
+        android:layout_width="191dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
