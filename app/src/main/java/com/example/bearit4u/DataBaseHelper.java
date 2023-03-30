@@ -14,7 +14,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
 
-    final static int DATABASE_VERSION = 9;
+    final static int DATABASE_VERSION = 11;
 
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
@@ -51,11 +51,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     final static String T4COL5= "Services";
     final static String T4COL6= "Pickup";           //0 for pick up, 1 for drop in
     final static String T4COL7= "Appointment";      //0 for appointment, 1 for service
+    final static String T4COL8= "Report";
 
     //Report Table
-    final static String TABLE5_NAME = "Report_table";
-    final static String T5COL1= "sId";
-    final static String T5COL2 = "Report";
+    final static String TABLE5_NAME = "Reminder_table";
+    final static String T5COL1= "rId";
+    final static String T5COL2= "sId";
+    final static String T5COL3 = "spId";
+    final static String T5COL4 = "uId";
 
 
     public DataBaseHelper(@Nullable Context context) {
@@ -85,11 +88,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         query= "CREATE TABLE "+ TABLE4_NAME +
                 "(" + T4COL1+ " INTEGER PRIMARY KEY, "+T4COL2+ " INTEGER, "+
-                T4COL3+" INTEGER,"+T4COL4+" TEXT,"+T4COL5+" TEXT,"+T4COL6+" INTEGER,"+T4COL7+" INTEGER)";
+                T4COL3+" INTEGER,"+T4COL4+" TEXT,"+T4COL5+" TEXT,"+T4COL6+" INTEGER,"
+                +T4COL7+" INTEGER,"+T4COL8+" TEXT)";
         sqLiteDatabase.execSQL(query);
 
         query= "CREATE TABLE "+ TABLE5_NAME +
-                "(" + T5COL1+ " INTEGER, "+T5COL2+ " TEXT)";
+                "(" + T5COL1+ " INTEGER PRIMARY KEY, "+T5COL2+ " INTEGER, "+
+                T5COL3+" INTEGER,"+T5COL4+ " INTEGER)";
         sqLiteDatabase.execSQL(query);
     }
 
@@ -150,6 +155,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(T4COL5, service);
         values.put(T4COL6, pickup);
         values.put(T4COL7, appointment);
+        values.put(T4COL8, "");
         long l = sqLiteDatabase.insert(TABLE4_NAME, null, values);
 
         if(l == -1){
@@ -158,18 +164,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
     }
-    public void addReportData(int sid,String report){
+    public void addReminderData(int sid,int spid, int uid){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
-        values.put(T2COL1, sid);
-        values.put(T2COL2, report);
+        values.put(T5COL2, sid);
+        values.put(T5COL3, spid);
+        values.put(T5COL4, uid);
         long l = sqLiteDatabase.insert(TABLE5_NAME, null, values);
 
         if(l == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Reminder Sent!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -202,6 +208,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE4_NAME;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        return cursor;
+    }
+    //view reminder by user
+    public Cursor viewReminderData(int uid){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE5_NAME+" WHERE "+T5COL4+ "=?";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, new String[]{Integer.toString(uid)});
         return cursor;
     }
 
@@ -258,16 +271,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    void updateService(int sid, String date,
+    void updateService(int sid, String date, String services,
                         int pickup, int appointment){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T4COL4, date);
-//        values.put(T4COL5, service);
+        values.put(T4COL5, services);
         values.put(T4COL6, pickup);
         values.put(T4COL7, appointment);
         long result = db.update(TABLE4_NAME, values, "sid=?", new String[]{Integer.toString(sid)});
 
+        if(result < 0){
+
+            Toast.makeText(context, "Failed to Update!", Toast.LENGTH_SHORT).show();
+        }else{
+
+            Toast.makeText(context, "Update Success!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void updateReport(int sid, String content){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T4COL8, content);
+        long result = db.update(TABLE4_NAME, values, "sid=?", new String[]{Integer.toString(sid)});
+
+        if(result < 0){
+
+            Toast.makeText(context, "Failed to Update!", Toast.LENGTH_SHORT).show();
+        }else{
+
+            Toast.makeText(context, "Update Success!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void appointmentToService(int sid){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T4COL7, 1);
+        long result = db.update(TABLE4_NAME, values, "sid=?", new String[]{Integer.toString(sid)});
         if(result < 0){
 
             Toast.makeText(context, "Failed to Update!", Toast.LENGTH_SHORT).show();

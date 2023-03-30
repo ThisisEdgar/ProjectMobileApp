@@ -59,8 +59,6 @@ public class EditServiceActivity extends AppCompatActivity
                     int uid = cursor1.getInt(2);
                     int spid = cursor1.getInt(1);
                     appointment = cursor1.getInt(6);
-                    if(appointment == 1)
-                        update.setText("Next");
                     if(cursor1.getInt(5) == 0)
                         pickup.setChecked(TRUE);
                     else
@@ -69,10 +67,10 @@ public class EditServiceActivity extends AppCompatActivity
                     while(cursor2.moveToNext()){
                         if(cursor2.getInt(0) == uid){
                             StringBuilder str = new StringBuilder();
-                            str.append("Customer Name:" + cursor2.getString(3));
-                            str.append(" " + cursor2.getString(4) + "\n");
-                            str.append("Email: "+cursor2.getString(1) + "\n");
-                            str.append("Phone: "+cursor2.getString(6));
+                            str.append("Customer Name:" + cursor2.getString(1));
+                            str.append(" " + cursor2.getString(2) + "\n");
+                            str.append("Email: "+cursor2.getString(5) + "\n");
+                            str.append("Phone: "+cursor2.getString(4));
                             userInfo.setText(str);
                         }
                     }
@@ -101,32 +99,29 @@ public class EditServiceActivity extends AppCompatActivity
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(appointment == 0){
-                    String newDate = date.getText().toString();
-                    StringBuilder str = new StringBuilder();
-                    for (String selectedService: selectedServices){
-                       if (selectedService.equals(selectedServices.get(selectedServices.size()-1)))
-                           str.append(selectedService);
-                       else
-                           str.append(selectedService + ",");
-                    }
-                    int pickupValue;
-                    if(pickup.isChecked())
-                        pickupValue = 0;
+
+                String newDate = date.getText().toString();
+                selectedServices = adapter.selectedServices;
+                StringBuilder str = new StringBuilder();
+                for (String selectedService: selectedServices){
+                    if (selectedService.equals(selectedServices.get(selectedServices.size()-1)))
+                        str.append(selectedService);
                     else
-                        pickupValue = 1;
-                    databaseHelper.updateService(sid, newDate, pickupValue, 0);
+                        str.append(selectedService + ",");
                 }
+                int pickupValue;
+                if(pickup.isChecked())
+                    pickupValue = 0;
+                else
+                    pickupValue = 1;
+                databaseHelper.updateService(sid, newDate, String.valueOf(str), pickupValue, appointment);
+
             }
         });
     }
 
     @Override
     public void onItemClick(View view, int position) {
-//        CheckBox serviceBox = view.findViewById(R.id.chboxService);
-//        if(serviceBox.isChecked() && !selectedServices.contains(serviceBox.getText().toString()))
-//            selectedServices.add(serviceBox.getText().toString());
-//        if(!serviceBox.isChecked() && selectedServices.contains(serviceBox.getText().toString()))
-//            selectedServices.remove(selectedServices.indexOf(serviceBox.getText().toString()));
+
     }
 }

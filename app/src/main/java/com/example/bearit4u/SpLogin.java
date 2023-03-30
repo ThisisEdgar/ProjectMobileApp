@@ -26,8 +26,8 @@ public class SpLogin extends AppCompatActivity {
         databaseHelper = new DataBaseHelper(this);
 
 
-//        databaseHelper.addUserData("troy_kan@hotmail.com", "123456", "Troy", "Kan",
-//                "12345 Kingsway", "5873570958");
+//        databaseHelper.addUserData("Troy", "Kan", "12345 Kingsway", "5873570958",
+//                "troy@hotmail.com", "123456");
 //        databaseHelper.addSPData("abc", "ABC Car Service", "ab12345c", "600 Royal Ave", "New Westminster",
 //                "6041234567", "oil change,car inspection,engine check");
 //        databaseHelper.addSPData("bTire", "Burnaby Tire", "qwerty", "7000 Kingsway", "Burnaby",

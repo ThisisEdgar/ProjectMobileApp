@@ -52,6 +52,15 @@ public class CustomerAdapterEditService extends RecyclerView.Adapter{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             service = itemView.findViewById(R.id.chboxService);
+            service.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(service.isChecked() && !selectedServices.contains(service.getText().toString()))
+                        selectedServices.add(service.getText().toString());
+                    if(!service.isChecked() && selectedServices.contains(service.getText().toString()))
+                        selectedServices.remove(selectedServices.indexOf(service.getText().toString()));
+                }
+            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

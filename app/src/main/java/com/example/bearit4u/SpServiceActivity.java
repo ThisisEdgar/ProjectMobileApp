@@ -43,10 +43,10 @@ public class SpServiceActivity extends AppCompatActivity
                     Cursor cursor2 = databaseHelper.viewUserData();
                     while(cursor2.moveToNext()){
                         if(cursor2.getInt(0) == uid){
-                            str.append(cursor2.getString(3));
-                            str.append(" " + cursor2.getString(4));
-                            str.append("\n");
                             str.append(cursor2.getString(1));
+                            str.append(" " + cursor2.getString(2));
+                            str.append("\n");
+                            str.append(cursor2.getString(5));
                             users.add(String.valueOf(str));
                             str.delete(0, str.length());
                         }

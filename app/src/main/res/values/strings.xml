@@ -80,6 +80,11 @@
     <string name="btnReminder">Send Reminder</string>
 
     <string name="btnAppointment">Appointment</string>
+
+    <string name="txtReport">Enter Report</string>
+    <string name="btnGenerate">Generate</string>
+
     <string name="btn1_CA">Confirm</string>
     <string name="btn2_CA">Edit</string>
+
 </resources>
