@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BearIt4U"
         tools:targetApi="31">
+<<<<<<< HEAD
 
+=======
+        <activity
+            android:name=".pickupOrDropOff"
+            android:exported="false" />
+>>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
         <activity
             android:name=".pickupOrDropOff"
             android:exported="false">

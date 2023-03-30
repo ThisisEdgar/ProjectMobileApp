@@ -62,6 +62,9 @@
     <string name="userIcon">icon for user</string>
     <string name="passIcon">TODicon for password</string>
     <string name="hintSpinner">Select a city</string>
+<<<<<<< HEAD
     <string name="btnPickup">Pickup</string>
     <string name="btnDropoff">Drop Off</string>
+=======
+>>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
 </resources>

@@ -25,10 +25,17 @@ public class SpLogin extends AppCompatActivity {
         setContentView(R.layout.activity_sp_login);
         databaseHelper = new DataBaseHelper(this);
 
+<<<<<<< HEAD
 
        //  databaseHelper.addSPData( "Walmart",
        //  "Walmart","Walmart","Walmart","Kelowna","354654",
       //  "Diagnose");
+=======
+        // dummy data
+        // databaseHelper.addSPData( "Montigo",
+        // "Montigo","Montigo","Montigo","Vancouver","354654",
+        //"repair");
+>>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
 
         EditText username = findViewById(R.id.editTextUsername);
         EditText password = findViewById(R.id.editTextPassword);

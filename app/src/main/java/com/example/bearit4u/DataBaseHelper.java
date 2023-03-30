@@ -13,7 +13,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
+<<<<<<< HEAD
     final static int DATABASE_VERSION = 9;
+=======
+    final static int DATABASE_VERSION = 8;
+>>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
     final static String T1COL1 = "spId";
@@ -125,6 +129,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+<<<<<<< HEAD
     public void addServiceData(String date,String services) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -142,6 +147,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+=======
+>>>>>>> parent of 8078d35 (Merge pull request #12 from ThisisEdgar/Troy)
     //method to extract data from the database
     public Cursor viewSPData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
