@@ -13,6 +13,13 @@
         android:theme="@style/Theme.BearIt4U"
         tools:targetApi="31">
         <activity
+            android:name=".pickupOrDropOff"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".EditServiceActivity"
             android:exported="false">
             <meta-data
@@ -33,6 +40,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".SelectCityandDate"
             android:exported="false" />

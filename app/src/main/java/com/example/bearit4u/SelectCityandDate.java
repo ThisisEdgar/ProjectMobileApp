@@ -30,6 +30,8 @@ public class SelectCityandDate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_cityand_date);
+
+
         /*adding random data
         DataBaseHelper sqLiteDatabase = new DataBaseHelper(this);
         sqLiteDatabase.addSPData("username", "name", "password", "address", "city", "phone", "services");
@@ -86,12 +88,14 @@ public class SelectCityandDate extends AppCompatActivity {
                 } else {
                     //Test if it works
                     Toast.makeText(SelectCityandDate.this, "Day selected " + day + " of " + month + " of " + year, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(SelectCityandDate.this, searchOrBookUser.class);
+                    Intent intent = new Intent(SelectCityandDate.this, pickupOrDropOff.class);
                     intent.putExtra("city", selectedCity);
                     intent.putExtra("day", day);
                     intent.putExtra("month", month);
                     intent.putExtra("year", year);
                     intent.putExtra("user_id",user_id);
+
+
                     startActivity(intent);
                 }
             }
