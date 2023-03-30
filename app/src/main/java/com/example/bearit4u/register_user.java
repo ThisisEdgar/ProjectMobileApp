@@ -3,6 +3,7 @@ package com.example.bearit4u;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Currency;
 
 public class register_user extends AppCompatActivity {
     DataBaseHelper DB;
@@ -78,29 +82,47 @@ public class register_user extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                ArrayList<String> names = new ArrayList<>();
 
                 if (checkData() == true) {
 
                     Toast.makeText(register_user.this, "error detected", Toast.LENGTH_SHORT).show();
 
                 } else {
+                    DataBaseHelper databaseHelper = new DataBaseHelper(register_user.this);
+                    Cursor cursor = databaseHelper.viewUserData();
+                    String usernames;
+                    if (cursor.getCount() > 0) {
+                        while (cursor.moveToNext()) {
+                             usernames = cursor.getString(1); //Number of column 5
+                            names.add(usernames);
 
-                    DB.addUserData(
-                            fn.getText().toString().trim(),
-                            ln.getText().toString().trim(),
-                            address.getText().toString().trim(),
-                            phone.getText().toString(),
-                            email.getText().toString().trim(),
-                            password.getText().toString()
-                    );
-
-                    Toast.makeText(register_user.this, "Register success!, you will return to the previous screen", Toast.LENGTH_SHORT).show();
-
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            finish();
                         }
-                    }, 5* 1000);
+                    }
+                    if (names.contains(fn.getText().toString()))
+                    {
+                        Toast.makeText(register_user.this, "Username already in use", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        DB.addUserData(
+                                fn.getText().toString().trim(),
+                                ln.getText().toString().trim(),
+                                address.getText().toString().trim(),
+                                phone.getText().toString(),
+                                email.getText().toString().trim(),
+                                password.getText().toString()
+                        );
+
+                        Toast.makeText(register_user.this, "Register success!, you will return to the previous screen", Toast.LENGTH_SHORT).show();
+
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                finish();
+                            }
+                        }, 5* 1000);
+                    }
+
 
                 }
             }
