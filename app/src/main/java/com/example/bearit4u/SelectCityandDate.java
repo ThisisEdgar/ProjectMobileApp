@@ -30,19 +30,21 @@ public class SelectCityandDate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_cityand_date);
-        /*adding random data
+        //adding random data
+
+        /*
         DataBaseHelper sqLiteDatabase = new DataBaseHelper(this);
-        sqLiteDatabase.addSPData("username", "name", "password", "address", "city", "phone", "services");
-        sqLiteDatabase.addSPData("user1", "name1", "pass1", "address1", "New York", "111-222-3333", "service1");
-        sqLiteDatabase.addSPData("user2", "name2", "pass2", "address2", "New York", "444-555-6666", "service2");
-        sqLiteDatabase.addSPData("user3", "name3", "pass3", "address3", "Los Angeles", "777-888-9999", "service3");
-        sqLiteDatabase.addSPData("user4", "name4", "pass4", "address4", "Los Angeles", "111-222-3333", "service4");
-        sqLiteDatabase.addSPData("user5", "name5", "pass5", "address5", "Chicago", "444-555-6666", "service5");
-        sqLiteDatabase.addSPData("user6", "name6", "pass6", "address6", "Chicago", "777-888-9999", "service6");
-        sqLiteDatabase.addSPData("user7", "name7", "pass7", "address7", "Houston", "111-222-3333", "service7");
-        sqLiteDatabase.addSPData("user8", "name8", "pass8", "address8", "Houston", "444-555-6666", "service8");
-        sqLiteDatabase.addSPData("user9", "name9", "pass9", "address9", "Philadelphia", "777-888-9999", "service9");
-        sqLiteDatabase.addSPData("user10", "name10", "pass10", "address10", "Philadelphia", "111-222-3333", "service10");
+        sqLiteDatabase.addSPData("walmart", "name", "password", "address", "city", "phone", "services");
+        sqLiteDatabase.addSPData("target", "name1", "password", "address1", "New York", "111-222-3333", "service1");
+        sqLiteDatabase.addSPData("chipotle", "name2", "pass2", "address2", "New York", "444-555-6666", "service2");
+        sqLiteDatabase.addSPData("texmex", "name3", "pass3", "address3", "Los Angeles", "777-888-9999", "service3");
+        sqLiteDatabase.addSPData("spaghettiFactory", "name4", "pass4", "address4", "Los Angeles", "111-222-3333", "service4");
+        sqLiteDatabase.addSPData("acer", "name5", "pass5", "address5", "Chicago", "444-555-6666", "service5");
+        sqLiteDatabase.addSPData("microsoft", "name6", "pass6", "address6", "Chicago", "777-888-9999", "service6");
+        sqLiteDatabase.addSPData("google", "name7", "pass7", "address7", "Houston", "111-222-3333", "service7");
+        sqLiteDatabase.addSPData("samsung", "name8", "pass8", "address8", "Houston", "444-555-6666", "service8");
+        sqLiteDatabase.addSPData("apple", "name9", "pass9", "address9", "Philadelphia", "777-888-9999", "service9");
+        sqLiteDatabase.addSPData("Xiaomi", "name10", "pass10", "address10", "Philadelphia", "111-222-3333", "service10");
         */
         Intent intent =getIntent();
         user_id = intent.getStringExtra("user_id");
@@ -54,7 +56,11 @@ public class SelectCityandDate extends AppCompatActivity {
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 String allCities = cursor.getString(5); //Number of column 5
-                cities.add(allCities);
+                if (!cities.contains(allCities))
+                {
+                    cities.add(allCities);
+                }
+
             }
         }
 
@@ -81,11 +87,11 @@ public class SelectCityandDate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String selectedCity = city.getSelectedItem().toString();
-                if (TextUtils.isEmpty(selectedCity) || day == null || month == null || year == null) {
+                if (TextUtils.isEmpty(selectedCity) || day == null || month == null || year == null || selectedCity.equals("city")) {
                     Toast.makeText(SelectCityandDate.this, "Please select a city and a date for your appointment", Toast.LENGTH_LONG).show();
                 } else {
                     //Test if it works
-                    Toast.makeText(SelectCityandDate.this, "Day selected " + day + " of " + month + " of " + year, Toast.LENGTH_LONG).show();
+                    Toast.makeText(SelectCityandDate.this, "city selected "+selectedCity +" day selected"+ day + " of " + month + " of " + year, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(SelectCityandDate.this, searchOrBookUser.class);
                     intent.putExtra("city", selectedCity);
                     intent.putExtra("day", day.toString());
