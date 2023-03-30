@@ -68,6 +68,13 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
         startActivity(intent);
             }
         });
+        btngoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(searchOrBookUser.this, SelectCityandDate.class);
+                startActivity(intent1);
+            }
+        });
 
     }
     // Check this
@@ -75,9 +82,10 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
     public void onItemClick(View view, Integer pos) {
         //Create pickupOrDropOff
         selectedProvider = provider[pos];
-        Toast.makeText(searchOrBookUser.this, "Selected Provider: "+provider[pos]+ "date: "+month+"/"+day+"/"+year
-                ,Toast.LENGTH_LONG).show();
         this.pos = pos;
+        Toast.makeText(searchOrBookUser.this, "Selected Provider: " +provider[pos]+ " date: "+month+"/"+day+"/"+year
+                ,Toast.LENGTH_LONG).show();
+
     }
 
 }
