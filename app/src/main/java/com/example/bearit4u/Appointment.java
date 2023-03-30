@@ -8,4 +8,6 @@ public class Appointment {
     private ArrayList<String> services;
     private String phone;
     private ArrayList<String> service;
+
+    // some changes
 }
