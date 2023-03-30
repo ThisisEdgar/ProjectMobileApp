@@ -11,6 +11,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -25,6 +27,7 @@ public class EditServiceActivity extends AppCompatActivity
     CustomerAdapterEditService adapter;
     ArrayList<String> services = new ArrayList<>();
     ArrayList<String> selectedServices = new ArrayList<>();
+    int appointment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class EditServiceActivity extends AppCompatActivity
         EditText date = findViewById(R.id.editTextDate);
         RadioButton pickup = findViewById(R.id.radioPickup);
         RadioButton dropin = findViewById(R.id.radioDropIn);
+
+        Button update = findViewById(R.id.btnUpdateService);
 
         Intent intent = getIntent();
         int sid = intent.getIntExtra("SID", 0);
@@ -53,6 +58,9 @@ public class EditServiceActivity extends AppCompatActivity
                     }
                     int uid = cursor1.getInt(2);
                     int spid = cursor1.getInt(1);
+                    appointment = cursor1.getInt(6);
+                    if(appointment == 1)
+                        update.setText("Next");
                     if(cursor1.getInt(5) == 0)
                         pickup.setChecked(TRUE);
                     else
@@ -89,10 +97,36 @@ public class EditServiceActivity extends AppCompatActivity
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         adapter = new CustomerAdapterEditService(this,services, selectedServices,this);
         recyclerView.setAdapter(adapter);
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(appointment == 0){
+                    String newDate = date.getText().toString();
+                    StringBuilder str = new StringBuilder();
+                    for (String selectedService: selectedServices){
+                       if (selectedService.equals(selectedServices.get(selectedServices.size()-1)))
+                           str.append(selectedService);
+                       else
+                           str.append(selectedService + ",");
+                    }
+                    int pickupValue;
+                    if(pickup.isChecked())
+                        pickupValue = 0;
+                    else
+                        pickupValue = 1;
+                    databaseHelper.updateService(sid, newDate, pickupValue, 0);
+                }
+            }
+        });
     }
 
     @Override
     public void onItemClick(View view, int position) {
-
+//        CheckBox serviceBox = view.findViewById(R.id.chboxService);
+//        if(serviceBox.isChecked() && !selectedServices.contains(serviceBox.getText().toString()))
+//            selectedServices.add(serviceBox.getText().toString());
+//        if(!serviceBox.isChecked() && selectedServices.contains(serviceBox.getText().toString()))
+//            selectedServices.remove(selectedServices.indexOf(serviceBox.getText().toString()));
     }
 }

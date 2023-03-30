@@ -49,7 +49,7 @@ public class SpMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(SpMain.this,SPUserActivity.class));
+                startActivity(new Intent(SpMain.this,ShowUsers.class));
             }
         });
 

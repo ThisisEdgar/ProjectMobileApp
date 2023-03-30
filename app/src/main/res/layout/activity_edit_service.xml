@@ -94,19 +94,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
         android:layout_marginBottom="17dp"
         android:text="@string/txtServiceReport"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editServiceRecyclerView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/editServiceRecyclerView"
         android:layout_width="323dp"
         android:layout_height="161dp"
         android:layout_marginStart="44dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="44dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btnUpdateService"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtServiceReport" />
 </androidx.constraintlayout.widget.ConstraintLayout>

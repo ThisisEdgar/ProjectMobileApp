@@ -72,5 +72,6 @@ public class SpServiceActivity extends AppCompatActivity
         Intent intent = new Intent(SpServiceActivity.this,ServiceDetailActivity.class);
         intent.putExtra("SID", ids.get(position));
         startActivity(intent);
+        finish();
     }
 }

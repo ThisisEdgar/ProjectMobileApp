@@ -76,6 +76,7 @@ public class ServiceDetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(ServiceDetailActivity.this,EditServiceActivity.class);
                 intent.putExtra("SID", sid);
                 startActivity(intent);
+                finish();
             }
         });
     }

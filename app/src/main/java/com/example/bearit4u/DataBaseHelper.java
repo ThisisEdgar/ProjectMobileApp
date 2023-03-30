@@ -257,6 +257,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    void updateService(int sid, String date,
+                        int pickup, int appointment){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T4COL4, date);
+//        values.put(T4COL5, service);
+        values.put(T4COL6, pickup);
+        values.put(T4COL7, appointment);
+        long result = db.update(TABLE4_NAME, values, "sid=?", new String[]{Integer.toString(sid)});
+
+        if(result < 0){
+
+            Toast.makeText(context, "Failed to Update!", Toast.LENGTH_SHORT).show();
+        }else{
+
+            Toast.makeText(context, "Update Success!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public Cursor viewProvidersByCity(String cityChosen){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE1_NAME +" WHERE "+T1COL6+ "=?";
