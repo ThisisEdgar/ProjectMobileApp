@@ -86,7 +86,7 @@ public class confirmation_appointment extends AppCompatActivity {
                 Intent intent = new Intent(confirmation_appointment.this, menu_user.class);
                 intent.putExtra("user_id",user_id);
                 startActivity(intent);
-                //Send
+                //Show a toast with appointment added
                 Toast.makeText(confirmation_appointment.this, "Appointment added"
                         ,Toast.LENGTH_LONG).show();
             }
