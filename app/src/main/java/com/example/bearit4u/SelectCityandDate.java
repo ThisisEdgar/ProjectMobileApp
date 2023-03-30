@@ -88,10 +88,10 @@ public class SelectCityandDate extends AppCompatActivity {
                     Toast.makeText(SelectCityandDate.this, "Day selected " + day + " of " + month + " of " + year, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(SelectCityandDate.this, searchOrBookUser.class);
                     intent.putExtra("city", selectedCity);
-                    intent.putExtra("day", day);
-                    intent.putExtra("month", month);
-                    intent.putExtra("year", year);
-                    intent.putExtra("user_id",user_id);
+                    intent.putExtra("day", day.toString());
+                    intent.putExtra("month", month.toString());
+                    intent.putExtra("year", year.toString());
+                    intent.putExtra("user_id",user_id.toString());
                     startActivity(intent);
                 }
             }

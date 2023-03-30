@@ -8,10 +8,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/providerList"
-        android:layout_width="243dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="71dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBook_SBU"
+        android:layout_width="265dp"
+        android:layout_height="242dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/radio_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_SBU" />
@@ -20,18 +20,18 @@
         android:id="@+id/btnBook_SBU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="9dp"
         android:text="@string/book_SOBU"
         app:layout_constraintBottom_toTopOf="@+id/btnBack_SBU"
-        app:layout_constraintStart_toStartOf="@+id/providerList"
-        app:layout_constraintTop_toBottomOf="@+id/providerList" />
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
 
     <Button
         android:id="@+id/btnBack_SBU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="34dp"
         android:text="@string/back_SOBU"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,4 +50,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBook_SBU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/providerList">
+
+        <RadioButton
+            android:id="@+id/radio_button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rdPick" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rdDrop" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
