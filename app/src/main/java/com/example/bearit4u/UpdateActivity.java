@@ -57,14 +57,9 @@ public class UpdateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DB.deleteUser(id);
 
-                Toast.makeText(UpdateActivity.this, "user deleted, returning to options screen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateActivity.this, "user deleted", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(UpdateActivity.this, SpMain.class);
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        startActivity(intent);
-                    }
-                }, 5* 1000);
+                finish();
             }
         });
     }

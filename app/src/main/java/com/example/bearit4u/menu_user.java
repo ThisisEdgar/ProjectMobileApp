@@ -15,7 +15,6 @@ public class menu_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_user);
 
-        Button bsearch = findViewById(R.id.btnSearch_MU);
         Button bBook = findViewById(R.id.btnBook_MU);
         Button bVAppointment = findViewById(R.id.btnView_MU);
         Button bService = findViewById(R.id.btnViewService_MU);
@@ -31,15 +30,6 @@ public class menu_user extends AppCompatActivity {
             }
         }
 
-
-        bsearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(menu_user.this, SelectCityandDate.class);
-                intent.putExtra("user_id",userId);
-                startActivity(intent);
-            }
-        });
         bBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,9 +57,10 @@ public class menu_user extends AppCompatActivity {
         bVEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(menu_user.this, Login_main.class);
-//                intent.putExtra("user_id",userId);
-//                startActivity(intent);
+
+                Intent intent = new Intent(menu_user.this, ViewSingleUser.class);
+                intent.putExtra("user_id",userId);
+                startActivity(intent);
             }
         });
         bLogout.setOnClickListener(new View.OnClickListener() {
