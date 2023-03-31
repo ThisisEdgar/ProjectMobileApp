@@ -197,15 +197,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }return cursor;
     }
 
-    public Cursor viewSingleUserData(){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE2_NAME + " WHERE " +T2COL1+ "=?"  ;
-
-        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-
-        if (sqLiteDatabase != null){
-            cursor= sqLiteDatabase.rawQuery(query,null);
-        }return cursor;
+    public Cursor viewSingleUserData(int id){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE2_NAME + " WHERE " + T2COL1 + "=?";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, new String[]{String.valueOf(id)});
+        return cursor;
 
     }
 
@@ -356,5 +352,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
         }
     }
+    public Cursor searchName(String name){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE2_NAME + " WHERE " +T2COL2+ "=?";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, new String[]{name});
+
+        if (cursor.getCount() > 0){
+            return cursor;
+        } else {
+            return null;
+        }
+    }
+
 
 }

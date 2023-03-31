@@ -7,15 +7,93 @@
     tools:context=".ViewSingleUser">
 
     <TextView
-        android:id="@+id/textViewSingleUseData"
-        android:layout_width="0dp"
-        android:layout_height="480dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="1dp"
+        android:id="@+id/usernametxt_VSU"
+        android:layout_width="201dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="27dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/lastNametxt_VSU"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="TextView"
-        android:textSize="20dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/title_VSU" />
+
+    <TextView
+        android:id="@+id/emailtxt_VSU"
+        android:layout_width="205dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="29dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtaddress_VSU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonetxt_VSU" />
+
+    <TextView
+        android:id="@+id/lastNametxt_VSU"
+        android:layout_width="198dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="35dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/phonetxt_VSU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernametxt_VSU" />
+
+    <TextView
+        android:id="@+id/txtaddress_VSU"
+        android:layout_width="232dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="44dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEdit_VSU"
+        app:layout_constraintStart_toStartOf="@+id/emailtxt_VSU"
+        app:layout_constraintTop_toBottomOf="@+id/emailtxt_VSU" />
+
+    <TextView
+        android:id="@+id/phonetxt_VSU"
+        android:layout_width="203dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="36dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/emailtxt_VSU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNametxt_VSU" />
+
+    <Button
+        android:id="@+id/btnBack_VSU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        android:text="@string/btnBack_VSU"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnEdit_VSU" />
+
+    <Button
+        android:id="@+id/btnEdit_VSU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="31dp"
+        android:text="@string/btnEdit_VSU"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBack_VSU"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtaddress_VSU" />
+
+    <TextView
+        android:id="@+id/title_VSU"
+        android:layout_width="232dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="38dp"
+        android:text="@string/title_VSU"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/usernametxt_VSU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
