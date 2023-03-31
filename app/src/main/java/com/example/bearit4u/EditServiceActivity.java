@@ -43,6 +43,7 @@ public class EditServiceActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         int sid = intent.getIntExtra("SID", 0);
+        String spAndU = "";
         databaseHelper = new DataBaseHelper(this);
         Cursor cursor1 = databaseHelper.viewServiceData();
 
@@ -70,8 +71,8 @@ public class EditServiceActivity extends AppCompatActivity
                             str.append("Customer Name:" + cursor2.getString(1));
                             str.append(" " + cursor2.getString(2) + "\n");
                             str.append("Email: "+cursor2.getString(5) + "\n");
-                            str.append("Phone: "+cursor2.getString(4));
-                            userInfo.setText(str);
+                            str.append("Phone: "+cursor2.getString(4)+ "\n");
+                            spAndU = String.valueOf(str);
                         }
                     }
                     Cursor cursor3 = databaseHelper.viewSPData();
@@ -82,7 +83,12 @@ public class EditServiceActivity extends AppCompatActivity
                             for(int i = 0; i < tokens2.length; i++){
                                 services.add(tokens2[i]);
                             }
-
+                            StringBuilder str = new StringBuilder();
+                            str.append("\nSP Name:"+cursor3.getString(2));
+                            str.append("\n"+"Address:\n"+cursor3.getString(4)+", "+cursor3.getString(5));
+                            str.append("\nPhone: "+cursor3.getString(6));
+                            spAndU += String.valueOf(str);
+                            userInfo.setText(spAndU);
                         }
                     }
                 }

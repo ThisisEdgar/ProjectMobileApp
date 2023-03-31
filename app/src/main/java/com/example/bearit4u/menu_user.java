@@ -60,17 +60,19 @@ public class menu_user extends AppCompatActivity {
         bVAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(menu_user.this, Login_main.class);
-//                intent.putExtra("user_id",userId);
-//                startActivity(intent);
+                Intent intent = new Intent(menu_user.this, SpServiceActivity.class);
+                intent.putExtra("UID",Integer.parseInt(userId));
+                intent.putExtra("APPOINT",0);
+                startActivity(intent);
             }
         });
         bService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(menu_user.this, Login_main.class);
-//                intent.putExtra("user_id",userId);
-//                startActivity(intent);
+                Intent intent = new Intent(menu_user.this, SpServiceActivity.class);
+                intent.putExtra("UID",Integer.parseInt(userId));
+                intent.putExtra("APPOINT",1);
+                startActivity(intent);
             }
         });
         bVEdit.setOnClickListener(new View.OnClickListener() {
