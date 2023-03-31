@@ -51,11 +51,18 @@ public class confirmation_appointment extends AppCompatActivity {
 
 
         //Add to string for each value in arrayList
-        for (int i=0; i< services.size(); i++)
-        {
-            tservices.setText("");
-            myServices += "";
+        int size =services.size();
+        String text="";
+        for (int i =0; i < size; i++) {
+            if (i == size -1){
+                text += services.get(i);
+            }
+            else {
+                text+=services.get(i)+", ";
+            }
         }
+        tservices.setText(text);
+        myServices =text;
         date = day + "/" + month + "/" + year;
         if(option.equals("pickup"))
         {
