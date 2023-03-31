@@ -92,5 +92,7 @@
     <string name="title_VSU">View or Edit Profile</string>
     <string name="txtSelect">Select Services</string>
     <string name="btnNext">Next</string>
+    <string name="title_CA">Appointment</string>
+    <string name="confirm_CA">Please verify the data you introduced</string>
 
 </resources>

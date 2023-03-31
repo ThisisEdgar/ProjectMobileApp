@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class confirmation_appointment extends AppCompatActivity {
     String myServices,day,month,year,selectedCity,user_id,provider_id,option,date,db_option;
-    TextView tday,tmonth,tyear,tCity,toption,tservices;
+    TextView tday,tmonth,tyear,tCity,toption,tservices,tprovider;
     ArrayList<String> services;
     Button confirm,edit;
     @Override
@@ -40,13 +40,15 @@ public class confirmation_appointment extends AppCompatActivity {
         tCity =findViewById(R.id.txtCity_CA);
         toption =findViewById(R.id.txtOption_CA);
         tservices =findViewById(R.id.txtServices_CA);
+        tprovider = findViewById(R.id.txtProvider_CA);
 
         //set Text
-        tday.setText(day);
-        tmonth.setText(month);
-        tyear.setText(year);
-        tCity.setText(selectedCity);
-        toption.setText(option);
+        tday.setText("Day: " +day);
+        tmonth.setText("Month: " +month);
+        tyear.setText("Year: "+year);
+        tCity.setText("City: "+selectedCity);
+        toption.setText("Pickup or dropoff: "+option);
+
 
         //Add to string for each value in arrayList
         for (int i=0; i< services.size(); i++)
@@ -83,7 +85,7 @@ public class confirmation_appointment extends AppCompatActivity {
 
                 //insert values into database
                 DataBaseHelper databaseHelper = new DataBaseHelper(confirmation_appointment.this);
-                databaseHelper.addAppointment(user_id,date,provider_id,myServices,option,"0");
+                databaseHelper.addAppointment(user_id,date,provider_id,myServices,db_option,"0");
                 //send to menu_user
                 Intent intent = new Intent(confirmation_appointment.this, menu_user.class);
                 intent.putExtra("user_id",user_id);
