@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,10 +46,16 @@ public class UpdateActivity extends AppCompatActivity {
                         phone_input.getText().toString(), email_input.getText().toString(),
                         password_input.getText().toString());
                 // call the method
+                Intent intent= new Intent(UpdateActivity.this,menu_user.class);
                 DB.updateUser(id, user);
 
                 Toast.makeText(UpdateActivity.this, "user updated", Toast.LENGTH_SHORT).show();
-                finish();
+
+
+                 intent.putExtra("user_id",String.valueOf(id));
+
+                startActivity(intent);
+
             }
         });
 
@@ -58,21 +65,22 @@ public class UpdateActivity extends AppCompatActivity {
                 DB.deleteUser(id);
 
                 Toast.makeText(UpdateActivity.this, "user deleted", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(UpdateActivity.this, Login_main.class);
+                startActivity(intent);
                 finish();
             }
         });
     }
 
     void getIntentData(){
-        if(getIntent().hasExtra("id") || getIntent().hasExtra("fname") ||
+        if(getIntent().hasExtra("user_id") || getIntent().hasExtra("fname") ||
                 getIntent().hasExtra("lname") || getIntent().hasExtra("address") ||
-        getIntent().hasExtra("phone") || getIntent().hasExtra("email")
-        || getIntent().hasExtra("password")){
+                getIntent().hasExtra("phone") || getIntent().hasExtra("email")
+                || getIntent().hasExtra("password")){
 
             // getting data from intent
-            id = Integer.parseInt(getIntent().getStringExtra("id"));
-            fname = getIntent().getStringExtra("fname");
+            id = Integer.parseInt(getIntent().getStringExtra("user_id"));
+            fname = getIntent().getStringExtra("name");
             lname = getIntent().getStringExtra("lname");
             address = getIntent().getStringExtra("address");
             phone = getIntent().getStringExtra("phone");

@@ -7,9 +7,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class menu_user extends AppCompatActivity {
-    String userName,userId;
+    String userName,userId, user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +22,32 @@ public class menu_user extends AppCompatActivity {
         Button bVEdit = findViewById(R.id.btnViewEdit_MU);
         Button bLogout = findViewById(R.id.btnLogout_MU);
         Intent intent =getIntent();
-        userName = intent.getStringExtra("userName");
-        DataBaseHelper databaseHelper = new DataBaseHelper(this);
-        Cursor cursor = databaseHelper.viewUserData();
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-               userId = cursor.getString(0); //Number of column 0 user id
+
+
+        if (intent.hasExtra("userName")) {
+            String userName = intent.getStringExtra("userName");
+            if (!userName.isEmpty()) {
+                // get only user
+                DataBaseHelper databaseHelper = new DataBaseHelper(this);
+                Cursor cursor = databaseHelper.searchName(userName);
+                if (cursor.getCount() > 0) {
+                    while (cursor.moveToNext()) {
+                        userId = cursor.getString(0); //Number of column 0 user id
+                    }
+                }
+            }
+        } else if (intent.hasExtra("user_id")) {
+            String user_id = intent.getStringExtra("user_id");
+            if (!user_id.isEmpty()) {
+                DataBaseHelper DB = new DataBaseHelper(this);
+                Cursor cursor = DB.viewSingleUserData(Integer.parseInt(user_id));
+                if (cursor.moveToFirst()) {
+                    userId = cursor.getString(cursor.getColumnIndexOrThrow("FirstName")); //Number of column 2
+                }
             }
         }
+
+
 
         bBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,17 +76,21 @@ public class menu_user extends AppCompatActivity {
         bVEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+               // Toast.makeText(menu_user.this, "Send user "+userId
+                 //       ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(menu_user.this, ViewSingleUser.class);
                 intent.putExtra("user_id",userId);
+
                 startActivity(intent);
             }
         });
         bLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(menu_user.this, Login_main.class);
                 intent.putExtra("user_id",userId);
+
                 startActivity(intent);
                 finish();
             }
