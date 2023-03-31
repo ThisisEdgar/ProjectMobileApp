@@ -19,7 +19,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
     final static String T1COL1 = "spId";
-    final static String T1COL2 = "Userame";
+    final static String T1COL2 = "Username";
     final static String T1COL3 = "Name";
     final static String T1COL4 = "Password";
     final static String T1COL5 = "Address";

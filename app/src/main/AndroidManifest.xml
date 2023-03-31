@@ -112,13 +112,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".SPUserActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".SpMain"
             android:exported="false">
@@ -151,6 +145,13 @@
             android:name=".ShowUsers"
             android:exported="true"
             android:label="Registered Users">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".pickupOrDropOff"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

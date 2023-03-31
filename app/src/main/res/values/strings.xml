@@ -87,6 +87,8 @@
 
     <string name="btn1_CA">Confirm</string>
     <string name="btn2_CA">Edit</string>
+    <string name="txtSelect">Select Services</string>
+    <string name="btnNext">Next</string>
 
 
 </resources>

@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -17,8 +18,9 @@ import android.widget.Toast;
 public class searchOrBookUser extends AppCompatActivity  implements CustomAdapterSearch.ItemClickListener{
     Integer pos;
     String[] provider;
+    String[] provider_ids;
     String day,month,year,selectedCity,selectedProvider,user_id,provider_id,option;
-    Button btnbook,btngoBack;
+    Button btnbook;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +42,13 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
         Cursor cursor = databaseHelper.viewProvidersByCity(selectedCity);
         Integer numberOfarray =0;
         provider = new String[cursor.getCount()];
+        provider_ids = new String[cursor.getCount()];
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
-                String allCities = cursor.getString(2);
-                provider_id = cursor.getString(0);
-
-                provider[numberOfarray] = allCities;
+                String name = cursor.getString(2);
+//                provider_id = cursor.getString(0);
+                provider_ids[numberOfarray] = Integer.toString(cursor.getInt(0));
+                provider[numberOfarray] = name;
                 numberOfarray++;
             }
         }
@@ -55,31 +58,25 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
         recyclerView.setLayoutManager(new GridLayoutManager(this,numOfCols));
         recyclerView.setAdapter(customAdapterSearch);
         //picup or dropoff
-        RadioGroup radioGroup = findViewById(R.id.radio_group);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-
-                if (checkedId == R.id.radio_button2) {
-                    option ="pickup";
-                } else if (checkedId == R.id.radio_button2) {
-                    option="dropoff";
-                }
-            }
-        });
+        RadioButton pickup = findViewById(R.id.radiobtnPickup);
+        RadioButton dropoff = findViewById(R.id.radiobtnDropoff);
+        if(pickup.isChecked())
+            option = "pickup";
+        if(dropoff.isChecked())
+            option = "dropoff";
         btnbook = findViewById(R.id.btnBook_SBU);
-        btngoBack = findViewById(R.id.btnBack_SBU);
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pos != 0){
+                if(pos >= 0){
                     Intent intent = new Intent(searchOrBookUser.this, pickupOrDropOff.class);
                     intent.putExtra("provider", provider[pos]);
                     intent.putExtra("day", day);
                     intent.putExtra("month", month);
                     intent.putExtra("year", year);
+                    intent.putExtra("city", selectedCity);
                     intent.putExtra("user_id",user_id);
-                    intent.putExtra("provider_id",provider_id);
+                    intent.putExtra("provider_id",provider_ids[pos]);
                     intent.putExtra("option",option);
                     startActivity(intent);
                 }
@@ -88,13 +85,7 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
                 }
             }
         });
-        btngoBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(searchOrBookUser.this, SelectCityandDate.class);
-                startActivity(intent1);
-            }
-        });
+
 
     }
     // Check this
