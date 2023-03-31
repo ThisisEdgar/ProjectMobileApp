@@ -60,15 +60,16 @@ public class searchOrBookUser extends AppCompatActivity  implements CustomAdapte
         //picup or dropoff
         RadioButton pickup = findViewById(R.id.radiobtnPickup);
         RadioButton dropoff = findViewById(R.id.radiobtnDropoff);
-        if(pickup.isChecked())
-            option = "pickup";
-        if(dropoff.isChecked())
-            option = "dropoff";
+
         btnbook = findViewById(R.id.btnBook_SBU);
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pos >= 0){
+                if(pos != null && selectedProvider != null){
+                    if(pickup.isChecked())
+                        option = "pickup";
+                    else
+                        option = "dropoff";
                     Intent intent = new Intent(searchOrBookUser.this, pickupOrDropOff.class);
                     intent.putExtra("provider", provider[pos]);
                     intent.putExtra("day", day);

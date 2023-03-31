@@ -77,6 +77,7 @@ public class ViewSingleUser extends AppCompatActivity {
                 intent.putExtra("password",password);
                 intent.putExtra("address",address);
                 startActivity(intent);
+                finish();
             }
         });
 

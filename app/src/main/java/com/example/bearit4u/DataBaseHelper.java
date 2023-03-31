@@ -14,7 +14,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private Context context;
     final static String DATABASE_NAME = "Bear4U.db";
 
-    final static int DATABASE_VERSION = 11;
+    final static int DATABASE_VERSION = 12;
 
     //Service Providers Table
     final static String TABLE1_NAME = "SP_table";
