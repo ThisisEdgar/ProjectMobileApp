@@ -39,6 +39,7 @@ public class ReportActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         sid = intent.getIntExtra("SID", 0);
+        int source = intent.getIntExtra("SOURCE", 0);
         Cursor cursor1 = databaseHelper.viewServiceData();
 
         if(cursor1.getCount()>0){
@@ -95,14 +96,24 @@ public class ReportActivity extends AppCompatActivity {
         else{
             Toast.makeText(ReportActivity.this, "nothing to read", Toast.LENGTH_LONG).show();
         }
-        StringBuilder str = new StringBuilder();
-        str.append("Service Report\n\n");
-        str.append(spInfo);
-        str.append(userInfo);
-        str.append(serviceInfo);
-        if(reportContent.equals(""))
-            reportContent = String.valueOf(str);
-        report.setText(reportContent);
+        if(source == 0){
+            StringBuilder str = new StringBuilder();
+            str.append("Service Report\n\n");
+            str.append(spInfo);
+            str.append(userInfo);
+            str.append(serviceInfo);
+            if(reportContent.equals(""))
+                reportContent = String.valueOf(str);
+            report.setText(reportContent);
+        }
+        else{
+            generate.setVisibility(View.INVISIBLE);
+            report.setKeyListener(null);
+            if(reportContent.equals(""))
+                reportContent = "No report yet, please contact your service provider.";
+            report.setText(reportContent);
+        }
+
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
