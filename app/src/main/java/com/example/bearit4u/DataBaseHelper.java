@@ -197,6 +197,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }return cursor;
     }
 
+    public Cursor viewSingleUserData(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE2_NAME + " WHERE " +T2COL1+ "=?"  ;
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (sqLiteDatabase != null){
+            cursor= sqLiteDatabase.rawQuery(query,null);
+        }return cursor;
+
+    }
+
     public Cursor viewVehcileData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE3_NAME;
