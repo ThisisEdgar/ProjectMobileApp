@@ -254,13 +254,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(T2COL1, user.getFirstName());
-        values.put(T2COL2, user.getLastName());
-        values.put(T2COL3, user.getAddress());
-        values.put(T2COL3, user.getPhone());
-        values.put(T2COL4, user.getEmail());
-        values.put(T2COL5, user.getPassword());
-        long result = db.update(TABLE2_NAME, values, "_id=?", new String[]{Integer.toString(id)});
+        values.put(T2COL2, user.getFirstName());
+        values.put(T2COL3, user.getLastName());
+        values.put(T2COL4, user.getAddress());
+        values.put(T2COL5, user.getPhone());
+        values.put(T2COL6, user.getEmail());
+        values.put(T2COL7, user.getPassword());
+        long result = db.update(TABLE2_NAME, values, "uid=?", new String[]{Integer.toString(id)});
 
         if(result == -1){
 

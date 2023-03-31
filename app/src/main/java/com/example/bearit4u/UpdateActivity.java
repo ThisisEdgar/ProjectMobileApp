@@ -1,7 +1,9 @@
 package com.example.bearit4u;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +15,9 @@ public class UpdateActivity extends AppCompatActivity {
 
     EditText fname_input, lname_input, address_input, phone_input, email_input, password_input;
     Button update_button;
+    Button delete_button;
     DataBaseHelper DB;
+    Handler handler = new Handler();
 
     String fname, lname, address, phone, email, password;
     int id;
@@ -29,6 +33,7 @@ public class UpdateActivity extends AppCompatActivity {
         email_input = findViewById(R.id.etEmail2);
         password_input= findViewById(R.id.etPassword2);
         update_button = findViewById(R.id.btnUpdate);
+        delete_button = findViewById(R.id.btnDelete);
 
         // summon the db instance
         getIntentData();
@@ -41,6 +46,25 @@ public class UpdateActivity extends AppCompatActivity {
                         password_input.getText().toString());
                 // call the method
                 DB.updateUser(id, user);
+
+                Toast.makeText(UpdateActivity.this, "user updated", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DB.deleteUser(id);
+
+                Toast.makeText(UpdateActivity.this, "user deleted, returning to options screen", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(UpdateActivity.this, SpMain.class);
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        startActivity(intent);
+                    }
+                }, 5* 1000);
             }
         });
     }

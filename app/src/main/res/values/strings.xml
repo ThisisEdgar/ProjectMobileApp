@@ -42,6 +42,7 @@
     <string name="etPassword">Input a Password</string>
     <string name="btnAddUser_AA">Add User</string>
     <string name="btnUpdate">Update</string>
+    <string name="btnDeleteUser">Delete </string>
     <!-- Shi Chao (Troy) -->
     <string name="btnRegister">Register</string>
     <string name="btnLogin">Login</string>
@@ -86,5 +87,6 @@
 
     <string name="btn1_CA">Confirm</string>
     <string name="btn2_CA">Edit</string>
+
 
 </resources>
