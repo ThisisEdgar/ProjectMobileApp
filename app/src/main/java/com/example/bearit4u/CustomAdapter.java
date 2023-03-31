@@ -64,15 +64,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(context, UpdateActivity.class);
-                intent.putExtra("id", String.valueOf(user_id.get(position)));
-                intent.putExtra("fname", String.valueOf(firstName.get(position)));
+                Intent intent = new Intent(context, UpdateActivity.class);
+                intent.putExtra("user_id", String.valueOf(user_id.get(position)));
+                intent.putExtra("name", String.valueOf(firstName.get(position)));
                 intent.putExtra("lname", String.valueOf(lastName.get(position)));
                 intent.putExtra("address", String.valueOf(address.get(position)));
                 intent.putExtra("phone", String.valueOf(phone.get(position)));
                 intent.putExtra("email", String.valueOf(email.get(position)));
                 intent.putExtra("password", String.valueOf(password.get(position)));
-            activity.startActivityForResult(intent,1);
+                activity.startActivityForResult(intent,1);
             }
         });
     }

@@ -46,16 +46,16 @@ public class UpdateActivity extends AppCompatActivity {
                         phone_input.getText().toString(), email_input.getText().toString(),
                         password_input.getText().toString());
                 // call the method
-                Intent intent= new Intent(UpdateActivity.this,menu_user.class);
+//                Intent intent= new Intent(UpdateActivity.this,menu_user.class);
                 DB.updateUser(id, user);
 
                 Toast.makeText(UpdateActivity.this, "user updated", Toast.LENGTH_SHORT).show();
 
 
-                 intent.putExtra("user_id",String.valueOf(id));
-
-                startActivity(intent);
-
+//                intent.putExtra("user_id",String.valueOf(id));
+//
+//                startActivity(intent);
+                finish();
             }
         });
 
@@ -71,7 +71,7 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
     }
-
+//
     void getIntentData(){
         if(getIntent().hasExtra("user_id") || getIntent().hasExtra("fname") ||
                 getIntent().hasExtra("lname") || getIntent().hasExtra("address") ||

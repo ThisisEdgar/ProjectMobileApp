@@ -12,14 +12,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class confirmation_appointment extends AppCompatActivity {
-    String myServices,day,month,year,selectedCity,user_id,provider_id,option,date,db_option;
+    String myServices,day,month,year,selectedCity,user_id,provider_id,option,date;
+    int db_option;
     TextView tday,tmonth,tyear,tCity,toption,tservices,tprovider;
     ArrayList<String> services;
     Button confirm,edit;
+    DataBaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_appointment);
+        databaseHelper = new DataBaseHelper(this);
 
         //get intents
         Intent intent = new Intent();
@@ -51,26 +54,22 @@ public class confirmation_appointment extends AppCompatActivity {
 
 
         //Add to string for each value in arrayList
-        int size =services.size();
-        String text="";
-        for (int i =0; i < size; i++) {
-            if (i == size -1){
-                text += services.get(i);
-            }
-            else {
-                text+=services.get(i)+", ";
-            }
+        myServices = "";
+        for (int i = 0; i < services.size(); i++){
+            if(i == services.size()-1)
+                myServices += services.get(i);
+            else
+                myServices += services.get(i) + ",";
         }
-        tservices.setText(text);
-        myServices =text;
+        tservices.setText(myServices);
         date = day + "/" + month + "/" + year;
         if(option.equals("pickup"))
         {
-            db_option = "0";
+            db_option = 0;
         }
-        else if(option.equals("dropOff"))
+        else if(option.equals("dropoff"))
         {
-            db_option = "1";
+            db_option = 1;
         }
 
         //initialize the buttons
@@ -91,8 +90,9 @@ public class confirmation_appointment extends AppCompatActivity {
             public void onClick(View view) {
 
                 //insert values into database
-                DataBaseHelper databaseHelper = new DataBaseHelper(confirmation_appointment.this);
-                databaseHelper.addAppointment(user_id,date,provider_id,myServices,db_option,"0");
+
+                databaseHelper.addServiceData(Integer.parseInt(provider_id), Integer.parseInt(user_id),
+                        date, myServices, db_option, 0);
                 //send to menu_user
                 Intent intent = new Intent(confirmation_appointment.this, menu_user.class);
                 intent.putExtra("user_id",user_id);

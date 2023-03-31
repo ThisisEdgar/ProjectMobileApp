@@ -56,7 +56,7 @@ public class enterLogin_user extends AppCompatActivity {
                     if (inputPassword.equals(passwords.get(usernames.indexOf(inputUser))))
                     {
                         Intent intent= new Intent(enterLogin_user.this, menu_user.class);
-                        intent.putExtra("userName",inputUser);
+                        intent.putExtra("user_id", Integer.toString(usernames.indexOf(inputUser)+1));
                         startActivity(intent);
                     }
                     else{
