@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class confirmation_appointment extends AppCompatActivity {
     String myServices,day,month,year,selectedCity,user_id,provider_id,option,date,db_option;
     TextView tday,tmonth,tyear,tCity,toption,tservices;
-    String[] services;
+    ArrayList<String> services;
     Button confirm,edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class confirmation_appointment extends AppCompatActivity {
         user_id = intent.getStringExtra("user_id");
         provider_id = intent.getStringExtra("provider_id");
         option=intent.getStringExtra("option");
-        services = intent.getStringArrayExtra("services");
+        services = intent.getStringArrayListExtra("services");
 
         //initialize TextViews
         tday =findViewById(R.id.txtDay_CA);
@@ -47,7 +49,7 @@ public class confirmation_appointment extends AppCompatActivity {
         toption.setText(option);
 
         //Add to string for each value in arrayList
-        for (int i=0; i< services.length; i++)
+        for (int i=0; i< services.size(); i++)
         {
             tservices.setText("");
             myServices += "";
