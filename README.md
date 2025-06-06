@@ -84,25 +84,14 @@ git clone https://github.com/ThisisEdgar/ProjectMobileApp.git
 
 ---
 
-## ⚡ Features Under Development
-
-* Password confirmation input
-* Input validation
-* Reminder notification system
-* Smooth transitions between layouts
-* UI design enhancements (colors, imagery)
-
----
-
-## 🌐 License
-
-This project is developed for academic purposes and does not currently include a commercial license.
-
----
 
 ## 🔍 Screenshots / UI Preview *(Optional)*
 
-*Add screenshots or screen recordings here to showcase key parts of your app.*
+![Logo](images/logo.png)
+![Logo](images/logo.png)
+![Logo](images/logo.png)
+![Logo](images/logo.png)
+
 
 ---
 
